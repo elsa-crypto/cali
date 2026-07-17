@@ -14,8 +14,8 @@
     --sky-deep: #4a7fd4;
     --sky-mid: #7fa8e8;
     --sky-pale: #cfe0f7;
-    --blue-bubble: #3b82f7;
-    --gray-bubble: #e9e9eb;
+    --blue-bubble: #0a84ff;
+    --gray-bubble: #e5e5ea;
   }
 
   html { scroll-behavior: smooth; }
@@ -123,7 +123,7 @@
   .phone {
     position: relative; z-index: 3;
     width: min(340px, 88vw);
-    background: rgba(255,255,255,0.95);
+    background: #fff;
     border-radius: 34px;
     border: 1px solid rgba(255,255,255,0.9);
     box-shadow: 0 30px 80px rgba(30, 58, 108, 0.35);
@@ -142,16 +142,56 @@
   .phone-name { font-size: 13px; font-weight: 600; color: var(--ink); }
   .phone-name span { color: rgba(28,43,69,0.4); font-weight: 400; }
 
-  .bubbles { display: flex; flex-direction: column; gap: 8px; }
+  .bubbles { display: flex; flex-direction: column; gap: 3px; }
+  .timestamp {
+    text-align: center;
+    font-size: 11px; font-weight: 500;
+    color: rgba(60,60,67,0.45);
+    margin: 2px 0 8px;
+  }
   .bubble {
-    max-width: 84%;
-    padding: 10px 14px;
-    border-radius: 20px;
-    font-size: 14.5px; line-height: 1.38;
+    position: relative;
+    max-width: 80%;
+    padding: 9px 13px;
+    border-radius: 18px;
+    font-size: 14.5px; line-height: 1.35;
     letter-spacing: -0.01em;
   }
-  .from-user { align-self: flex-end; background: var(--blue-bubble); color: #fff; border-bottom-right-radius: 6px; }
-  .from-ai   { align-self: flex-start; background: var(--gray-bubble); color: #111; border-bottom-left-radius: 6px; }
+  .from-user { align-self: flex-end; background: var(--blue-bubble); color: #fff; }
+  .from-ai   { align-self: flex-start; background: var(--gray-bubble); color: #000; }
+  .from-ai + .from-user, .from-user + .from-ai { margin-top: 9px; }
+
+  /* iMessage tails — only on the last bubble of a group */
+  .tail-user::before {
+    content: ""; position: absolute; bottom: -1px; right: -7px;
+    width: 20px; height: 20px;
+    background: var(--blue-bubble);
+    border-bottom-left-radius: 16px 14px;
+  }
+  .tail-user::after {
+    content: ""; position: absolute; bottom: -1px; right: -10px;
+    width: 10px; height: 20px;
+    background: #fff;
+    border-bottom-left-radius: 10px;
+  }
+  .tail-ai::before {
+    content: ""; position: absolute; bottom: -1px; left: -7px;
+    width: 20px; height: 20px;
+    background: var(--gray-bubble);
+    border-bottom-right-radius: 16px 14px;
+  }
+  .tail-ai::after {
+    content: ""; position: absolute; bottom: -1px; left: -10px;
+    width: 10px; height: 20px;
+    background: #fff;
+    border-bottom-right-radius: 10px;
+  }
+  .delivered {
+    align-self: flex-end;
+    font-size: 10.5px; font-weight: 500;
+    color: rgba(60,60,67,0.5);
+    margin-top: 3px; padding-right: 5px;
+  }
 
   /* incoming call pill */
   .call-pill {
@@ -345,10 +385,12 @@
           <div class="phone-name">Cali <span>›</span></div>
         </div>
         <div class="bubbles">
-          <div class="bubble from-user">long day 😮‍💨 can we meditate for a bit before dinner?</div>
-          <div class="bubble from-ai">Of course. Let's slow everything down for a few minutes.</div>
-          <div class="bubble from-ai">Want me to call you now? You can just close your eyes and follow my voice.</div>
-          <div class="bubble from-user">yes 🧘‍♀️</div>
+          <div class="timestamp">Today 9:41 PM</div>
+          <div class="bubble from-user tail-user">long day 😮‍💨 my crush hasn't texted me all day and i'm overthinking everything</div>
+          <div class="bubble from-ai">That silence is loud, I know. Let's get you out of your head for a few minutes.</div>
+          <div class="bubble from-ai tail-ai">Want me to call you? Close your eyes, follow my voice, and let the overthinking go quiet.</div>
+          <div class="bubble from-user tail-user">yes 🧘‍♀️</div>
+          <div class="delivered">Delivered</div>
         </div>
       </div>
       <div class="annotation">
