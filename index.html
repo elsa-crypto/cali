@@ -12,6 +12,7 @@
   :root {
     --ink: #1c2b45;
     --ink-soft: rgba(28, 43, 69, 0.72);
+    --paper: #fbf7f1;
     --sky-deep: #4a7fd4;
     --sky-mid: #7fa8e8;
     --sky-pale: #cfe0f7;
@@ -24,7 +25,7 @@
   body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Helvetica, Arial, sans-serif;
     color: var(--ink);
-    background: #eaf2fc;
+    background: var(--paper);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
@@ -41,22 +42,6 @@
       url('https://images.unsplash.com/photo-1702062372821-3ea923511bf6?q=80&w=2400&auto=format&fit=crop') center 62% / cover no-repeat,
       linear-gradient(180deg, #3f74cc 0%, #6396e0 34%, #9dbdee 62%, #d9e7f9 88%, #f2f7fd 100%);
     overflow: hidden;
-  }
-
-  .cloud { position: absolute; pointer-events: none; }
-  .cloud .puff {
-    position: absolute;
-    border-radius: 50%;
-    background: radial-gradient(ellipse at 46% 40%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.75) 34%, rgba(255,255,255,0.28) 58%, rgba(255,255,255,0) 74%);
-  }
-
-  .cloud-a, .cloud-b, .cloud-c { }
-
-  /* haze band near the horizon */
-  .haze {
-    position: absolute; left: -10%; right: -10%; bottom: -6%; height: 46%;
-    background: radial-gradient(ellipse at 50% 100%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.55) 48%, rgba(255,255,255,0) 78%);
-    pointer-events: none;
   }
 
   /* ---------- Nav ---------- */
@@ -95,6 +80,14 @@
     text-shadow: 0 2px 30px rgba(46, 84, 150, 0.35);
   }
   h1 .serif { font-weight: 400; letter-spacing: -0.01em; }
+
+  /* hand-drawn circle around a word */
+  .circled { position: relative; display: inline-block; padding: 0 0.06em; }
+  .circled svg {
+    position: absolute; left: -7%; top: -14%; width: 114%; height: 130%;
+    overflow: visible; pointer-events: none;
+    transform: rotate(-2.5deg);
+  }
 
   .hero-sub {
     margin-top: 22px;
@@ -232,7 +225,7 @@
   /* ---------- Quote band ---------- */
   .quote-band {
     position: relative;
-    background: linear-gradient(180deg, #f2f7fd 0%, #ffffff 100%);
+    background: var(--paper);
     padding: clamp(80px, 12vh, 130px) 24px;
     text-align: center;
   }
@@ -250,36 +243,39 @@
 
   /* ---------- How it works ---------- */
   .how {
-    background: #fff;
+    background: var(--paper);
     padding: 20px 24px clamp(80px, 10vh, 120px);
   }
   .how-inner { max-width: 1100px; margin: 0 auto; }
   .kicker {
     text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 0.14em;
-    text-transform: uppercase; color: #6d92cf; margin-bottom: 46px;
+    text-transform: uppercase; color: #c98ca8; margin-bottom: 46px;
   }
   .steps {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
   }
   .step {
-    background: linear-gradient(180deg, #f4f8fe 0%, #eaf2fc 100%);
-    border: 1px solid #dfeafa;
+    background: #fff;
+    border: 1px solid #f0e6da;
     border-radius: 22px;
     padding: 26px 22px 28px;
+    box-shadow: 0 12px 34px rgba(90, 60, 30, 0.06);
   }
   .step-num {
     width: 34px; height: 34px; border-radius: 50%;
-    background: linear-gradient(135deg, #6396e0, #4a7fd4);
     color: #fff; font-weight: 700; font-size: 15px;
     display: grid; place-items: center; margin-bottom: 16px;
-    box-shadow: 0 6px 16px rgba(74,127,212,0.35);
   }
+  .step:nth-child(1) .step-num { background: linear-gradient(135deg, #8fb2ea, #6396e0); box-shadow: 0 6px 16px rgba(99,150,224,0.4); }
+  .step:nth-child(2) .step-num { background: linear-gradient(135deg, #f2bBd1, #e39ab8); box-shadow: 0 6px 16px rgba(227,154,184,0.4); }
+  .step:nth-child(3) .step-num { background: linear-gradient(135deg, #f8d3a5, #eeb277); box-shadow: 0 6px 16px rgba(238,178,119,0.4); }
+  .step:nth-child(4) .step-num { background: linear-gradient(135deg, #c5b8ee, #a290dd); box-shadow: 0 6px 16px rgba(162,144,221,0.4); }
   .step h3 { font-size: 18px; letter-spacing: -0.02em; margin-bottom: 8px; }
   .step p { font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); }
 
   /* ---------- Durations ---------- */
   .durations {
-    background: #fff; text-align: center;
+    background: var(--paper); text-align: center;
     padding: 0 24px clamp(90px, 11vh, 130px);
   }
   .durations h2 { font-size: clamp(26px, 3.4vw, 38px); letter-spacing: -0.03em; font-weight: 800; }
@@ -287,8 +283,9 @@
   .chips { margin-top: 30px; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
   .chip {
     padding: 14px 26px; border-radius: 100px;
-    background: linear-gradient(180deg, #f4f8fe, #eaf2fc);
-    border: 1px solid #dfeafa;
+    background: #fff;
+    border: 1px solid #f0e6da;
+    box-shadow: 0 8px 22px rgba(90, 60, 30, 0.06);
     font-weight: 700; font-size: 16px; color: var(--ink);
   }
   .chip span { display: block; font-size: 12.5px; font-weight: 500; color: var(--ink-soft); margin-top: 2px; }
@@ -296,8 +293,12 @@
   /* ---------- Closing sky ---------- */
   .closing {
     position: relative;
-    background: linear-gradient(180deg, #ffffff 0%, #cfe0f7 26%, #9dbdee 48%, #6396e0 80%, #4a7fd4 100%);
-    padding: clamp(100px, 14vh, 160px) 24px clamp(90px, 12vh, 140px);
+    /* pink cotton-candy clouds (Unsplash photo-1501630834273), gradient fallback */
+    background:
+      linear-gradient(180deg, rgba(40, 45, 90, 0.30) 0%, rgba(40, 45, 90, 0.18) 45%, rgba(40, 45, 90, 0.32) 100%),
+      url('https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?q=80&w=2400&auto=format&fit=crop') center 30% / cover no-repeat,
+      linear-gradient(180deg, #cfd8f0 0%, #b8a8cf 100%);
+    padding: clamp(110px, 16vh, 180px) 24px clamp(100px, 14vh, 160px);
     text-align: center; overflow: hidden;
   }
   .closing h2 {
@@ -311,8 +312,8 @@
   .closing .btn-primary { margin-top: 38px; position: relative; z-index: 2; }
 
   footer {
-    background: #3a6cc0;
-    color: rgba(255,255,255,0.8);
+    background: #182338;
+    color: rgba(255,255,255,0.75);
     text-align: center;
     padding: 34px 24px 40px;
     font-size: 13px; line-height: 1.7;
@@ -323,12 +324,6 @@
   /* ---------- Animation & interactivity ---------- */
   .anim { opacity: 0; transform: translateY(10px); transition: opacity 0.4s ease, transform 0.4s ease; }
   .anim.show { opacity: 1; transform: none; }
-
-  /* drifting clouds */
-  .puff { animation: drift 38s ease-in-out infinite alternate; }
-  .cloud-b .puff { animation-duration: 46s; animation-direction: alternate-reverse; }
-  .cloud-c .puff { animation-duration: 54s; }
-  @keyframes drift { from { transform: translateX(-16px); } to { transform: translateX(20px); } }
 
   /* call pill states */
   .call-pill.anim { transform: rotate(1deg) scale(0.7) translateY(14px); }
@@ -426,7 +421,7 @@
 
   <div class="hero">
     <div>
-      <h1>Text me when you want to meditate. <span class="serif" style="display:block">I'll call you.</span></h1>
+      <h1>Text me when you want to meditate. <span class="serif" style="display:block">I'll <span class="circled">call you.<svg viewBox="0 0 100 40" preserveAspectRatio="none"><ellipse cx="50" cy="20" rx="47" ry="17" fill="none" stroke="#fff" stroke-width="1.6" opacity="0.9"/></svg></span></span></h1>
       <p class="hero-sub">Cali is an AI friend who meditates with you over a phone call. Text when you want a few calm minutes, answer the phone, and follow a session made just for you — no app, no library, no screen.</p>
       <div class="hero-actions">
         <a class="btn-primary" href="#waitlist">💬&ensp;Join the waitlist</a>
@@ -527,16 +522,6 @@
 
 <!-- ============ CLOSING ============ -->
 <section class="closing" id="waitlist">
-  <div class="cloud cloud-b" style="top: 18%; left: -6%; width: 540px; height: 230px; opacity: 0.8;">
-    <div class="puff" style="left: 0;    top: 60px; width: 250px; height: 140px;"></div>
-    <div class="puff" style="left: 150px; top: 10px; width: 270px; height: 180px;"></div>
-    <div class="puff" style="left: 320px; top: 70px; width: 220px; height: 130px;"></div>
-  </div>
-  <div class="cloud cloud-a" style="bottom: 8%; right: -8%; width: 600px; height: 250px; opacity: 0.75;">
-    <div class="puff" style="left: 0;    top: 80px; width: 270px; height: 150px;"></div>
-    <div class="puff" style="left: 180px; top: 10px; width: 290px; height: 200px;"></div>
-    <div class="puff" style="left: 360px; top: 90px; width: 240px; height: 140px;"></div>
-  </div>
   <h2>Your next meditation is <span class="serif">one text away.</span></h2>
   <a class="btn-primary" href="mailto:elsa@ditto.ai?subject=Cali%20waitlist">💬&ensp;Join the waitlist</a>
 </section>
@@ -550,21 +535,6 @@
 (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = s => document.querySelector(s);
-
-  // Cloud parallax on scroll
-  const clouds = [...document.querySelectorAll('.sky .cloud')];
-  if (!reduced && clouds.length) {
-    const speeds = clouds.map((_, i) => 0.06 + (i % 3) * 0.05);
-    let ticking = false;
-    addEventListener('scroll', () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        clouds.forEach((c, i) => c.style.translate = `0 ${scrollY * speeds[i]}px`);
-        ticking = false;
-      });
-    }, { passive: true });
-  }
 
   // Chat plays itself out
   const pill = $('#callPill');
