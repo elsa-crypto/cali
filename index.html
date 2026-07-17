@@ -325,20 +325,6 @@
   .cloud-c .puff { animation-duration: 54s; }
   @keyframes drift { from { transform: translateX(-16px); } to { transform: translateX(20px); } }
 
-  /* typing indicator */
-  .typing { display: none; gap: 4px; align-items: center; }
-  .typing.show { display: flex; }
-  .typing span {
-    width: 7px; height: 7px; border-radius: 50%; background: #a8a8ad;
-    animation: tdot 1.2s infinite ease-in-out;
-  }
-  .typing span:nth-child(2) { animation-delay: 0.15s; }
-  .typing span:nth-child(3) { animation-delay: 0.3s; }
-  @keyframes tdot {
-    0%, 60%, 100% { opacity: 0.35; transform: translateY(0); }
-    30% { opacity: 1; transform: translateY(-3px); }
-  }
-
   /* call pill states */
   .call-pill.anim { transform: rotate(1deg) scale(0.7) translateY(14px); }
   .call-pill.anim.show { transform: rotate(1deg); }
@@ -472,7 +458,6 @@
         <div class="bubbles">
           <div class="timestamp anim">Today 9:41 PM</div>
           <div class="bubble from-user tail-user anim" id="msg1">long day 😮‍💨 my crush hasn't texted me all day and i'm overthinking everything</div>
-          <div class="bubble from-ai typing" id="typingBubble"><span></span><span></span><span></span></div>
           <div class="bubble from-ai anim" id="msg2">That silence is loud, I know. Let's get you out of your head for a few minutes.</div>
           <div class="bubble from-ai tail-ai anim" id="msg3">Want me to call you? Close your eyes, follow my voice, and let the overthinking go quiet.</div>
           <div class="bubble from-user tail-user anim" id="msg4">yes 🧘‍♀️</div>
@@ -597,15 +582,12 @@
   }
 
   // Chat plays itself out
-  const typing = $('#typingBubble');
   const pill = $('#callPill');
   const steps = [
     { show: '.timestamp', wait: 150 },
-    { show: '#msg1', wait: 350 },
-    { typingOn: true, wait: 500 },
-    { show: '#msg2', typingOff: true, wait: 350 },
-    { typingBefore: '#msg3', wait: 450 },
-    { show: '#msg3', typingOff: true, wait: 350 },
+    { show: '#msg1', wait: 450 },
+    { show: '#msg2', wait: 450 },
+    { show: '#msg3', wait: 450 },
     { show: '#msg4', wait: 300 },
     { show: '.delivered', wait: 300 },
     { pill: true, wait: 0 },
@@ -613,9 +595,6 @@
   let t = reduced ? 0 : 250;
   steps.forEach(s => {
     setTimeout(() => {
-      if (s.typingBefore) typing.parentNode.insertBefore(typing, $(s.typingBefore));
-      if (s.typingOn || s.typingBefore) typing.classList.add('show');
-      if (s.typingOff) typing.classList.remove('show');
       if (s.show) $(s.show).classList.add('show');
       if (s.pill) {
         pill.classList.add('show');
