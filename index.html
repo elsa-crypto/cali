@@ -36,10 +36,10 @@
   .sky {
     position: relative;
     min-height: 100vh;
-    /* real sky: two palms on Unsplash (photo-1702062372821), gradient as fallback while it loads */
+    /* real sky: two palms against blue sky (Unsplash photo-1702062372821, saved locally), gradient as fallback while it loads */
     background:
       linear-gradient(180deg, rgba(16, 38, 84, 0.22) 0%, rgba(16, 38, 84, 0.08) 38%, rgba(16, 38, 84, 0) 70%),
-      url('https://images.unsplash.com/photo-1702062372821-3ea923511bf6?q=80&w=2400&auto=format&fit=crop') center 62% / cover no-repeat,
+      url('assets/hero-palms.jpg') center 62% / cover no-repeat,
       linear-gradient(180deg, #3f74cc 0%, #6396e0 34%, #9dbdee 62%, #d9e7f9 88%, #f2f7fd 100%);
     overflow: hidden;
   }
@@ -293,10 +293,10 @@
   /* ---------- Closing sky ---------- */
   .closing {
     position: relative;
-    /* pink cotton-candy clouds (Unsplash photo-1501630834273), gradient fallback */
+    /* pink cotton-candy clouds (Unsplash photo-1501630834273, saved locally), gradient fallback */
     background:
       linear-gradient(180deg, rgba(40, 45, 90, 0.30) 0%, rgba(40, 45, 90, 0.18) 45%, rgba(40, 45, 90, 0.32) 100%),
-      url('https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?q=80&w=2400&auto=format&fit=crop') center 30% / cover no-repeat,
+      url('assets/pink-clouds.jpg') center 30% / cover no-repeat,
       linear-gradient(180deg, #cfd8f0 0%, #b8a8cf 100%);
     padding: clamp(110px, 16vh, 180px) 24px clamp(100px, 14vh, 160px);
     text-align: center; overflow: hidden;
