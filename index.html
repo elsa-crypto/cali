@@ -366,26 +366,6 @@
   .wave span:nth-child(5) { height: 9px; animation-delay: -0.35s; }
   @keyframes wv { from { transform: scaleY(0.4); } to { transform: scaleY(1); } }
 
-  /* ---------- Breathing demo ---------- */
-  .breathe { background: #fff; text-align: center; padding: 0 24px clamp(90px, 11vh, 130px); }
-  .breathe .kicker { margin-bottom: 14px; }
-  .breathe h2 { font-size: clamp(26px, 3.4vw, 38px); letter-spacing: -0.03em; font-weight: 800; }
-  .breathe h2 .serif { font-weight: 400; }
-  .breath-stage { margin: 44px auto 0; width: 230px; height: 230px; display: grid; place-items: center; position: relative; }
-  .breath-halo {
-    position: absolute; inset: -20px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(127,168,232,0.22), rgba(127,168,232,0) 70%);
-  }
-  .breath-circle {
-    width: 150px; height: 150px; border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #e6effc, #9dbdee 55%, #6f9ae0);
-    box-shadow: 0 18px 50px rgba(74,127,212,0.35), inset 0 2px 8px rgba(255,255,255,0.7);
-    display: grid; place-items: center;
-    transform: scale(1);
-  }
-  .breath-circle span { color: #fff; font-weight: 600; font-size: 15px; letter-spacing: 0.02em; text-shadow: 0 1px 8px rgba(46,84,150,0.4); }
-  .breath-hint { margin-top: 28px; color: var(--ink-soft); font-size: 15px; }
-
   /* ---------- Responsive ---------- */
   @media (max-width: 880px) {
     .sky .cloud { opacity: 0.4 !important; }
@@ -575,17 +555,6 @@
   </div>
 </section>
 
-<!-- ============ BREATHE ============ -->
-<section class="breathe">
-  <div class="kicker">Try it right now</div>
-  <h2>One breath, <span class="serif">on the house.</span></h2>
-  <div class="breath-stage">
-    <div class="breath-halo"></div>
-    <div class="breath-circle" id="breathCircle"><span id="breathText">breathe in</span></div>
-  </div>
-  <p class="breath-hint">Follow the circle. In through your nose… out through your mouth.</p>
-</section>
-
 <!-- ============ CLOSING ============ -->
 <section class="closing" id="waitlist">
   <div class="cloud cloud-b" style="top: 18%; left: -6%; width: 540px; height: 230px; opacity: 0.8;">
@@ -631,17 +600,17 @@
   const typing = $('#typingBubble');
   const pill = $('#callPill');
   const steps = [
-    { show: '.timestamp', wait: 500 },
-    { show: '#msg1', wait: 900 },
-    { typingOn: true, wait: 1400 },
-    { show: '#msg2', typingOff: true, wait: 900 },
-    { typingBefore: '#msg3', wait: 1300 },
-    { show: '#msg3', typingOff: true, wait: 900 },
-    { show: '#msg4', wait: 700 },
-    { show: '.delivered', wait: 800 },
+    { show: '.timestamp', wait: 150 },
+    { show: '#msg1', wait: 350 },
+    { typingOn: true, wait: 500 },
+    { show: '#msg2', typingOff: true, wait: 350 },
+    { typingBefore: '#msg3', wait: 450 },
+    { show: '#msg3', typingOff: true, wait: 350 },
+    { show: '#msg4', wait: 300 },
+    { show: '.delivered', wait: 300 },
     { pill: true, wait: 0 },
   ];
-  let t = reduced ? 0 : 600;
+  let t = reduced ? 0 : 250;
   steps.forEach(s => {
     setTimeout(() => {
       if (s.typingBefore) typing.parentNode.insertBefore(typing, $(s.typingBefore));
@@ -677,29 +646,6 @@
     setTimeout(() => pill.classList.add('show'), 1600); // Cali tries again
   });
 
-  // Breathing demo
-  const circle = $('#breathCircle'), label = $('#breathText');
-  if (circle) {
-    if (reduced) {
-      label.textContent = 'breathe in… and out';
-    } else {
-      const phases = [
-        ['breathe in', 4000, 1.32],
-        ['hold', 1800, 1.32],
-        ['breathe out', 5200, 1],
-      ];
-      let i = 0;
-      const step = () => {
-        const [txt, dur, scale] = phases[i];
-        label.textContent = txt;
-        circle.style.transition = 'transform ' + dur + 'ms cubic-bezier(.45,0,.55,1)';
-        circle.style.transform = 'scale(' + scale + ')';
-        i = (i + 1) % phases.length;
-        setTimeout(step, dur);
-      };
-      step();
-    }
-  }
 })();
 </script>
 
