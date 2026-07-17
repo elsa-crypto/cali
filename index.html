@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cali — text to meditate, answer the phone</title>
 <meta name="description" content="Text Cali when you want to meditate. It calls you and guides a session made for you — no app, no library, no screen.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☁️</text></svg>">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -61,12 +62,7 @@
     padding: 26px clamp(22px, 5vw, 58px);
   }
   .brand { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 700; font-size: 21px; letter-spacing: -0.02em; }
-  .brand-icon {
-    width: 34px; height: 34px; border-radius: 9px;
-    background: linear-gradient(135deg, #b7d3ff 0%, #7fa8e8 55%, #5c8ade 100%);
-    box-shadow: inset 0 1px 2px rgba(255,255,255,0.7), 0 4px 14px rgba(28,43,69,0.25);
-    display: grid; place-items: center; font-size: 17px;
-  }
+  .logo-svg { filter: drop-shadow(0 3px 8px rgba(30, 50, 90, 0.35)); }
   .nav-cta {
     color: #fff; text-decoration: none; font-weight: 600; font-size: 15px;
     background: rgba(255,255,255,0.2);
@@ -319,6 +315,77 @@
   footer .disclaimer { max-width: 74ch; margin: 0 auto 14px; }
   footer strong { color: #fff; }
 
+  /* ---------- Animation & interactivity ---------- */
+  .anim { opacity: 0; transform: translateY(10px); transition: opacity 0.4s ease, transform 0.4s ease; }
+  .anim.show { opacity: 1; transform: none; }
+
+  /* drifting clouds */
+  .puff { animation: drift 38s ease-in-out infinite alternate; }
+  .cloud-b .puff { animation-duration: 46s; animation-direction: alternate-reverse; }
+  .cloud-c .puff { animation-duration: 54s; }
+  @keyframes drift { from { transform: translateX(-16px); } to { transform: translateX(20px); } }
+
+  /* typing indicator */
+  .typing { display: none; gap: 4px; align-items: center; }
+  .typing.show { display: flex; }
+  .typing span {
+    width: 7px; height: 7px; border-radius: 50%; background: #a8a8ad;
+    animation: tdot 1.2s infinite ease-in-out;
+  }
+  .typing span:nth-child(2) { animation-delay: 0.15s; }
+  .typing span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes tdot {
+    0%, 60%, 100% { opacity: 0.35; transform: translateY(0); }
+    30% { opacity: 1; transform: translateY(-3px); }
+  }
+
+  /* call pill states */
+  .call-pill.anim { transform: rotate(1deg) scale(0.7) translateY(14px); }
+  .call-pill.anim.show { transform: rotate(1deg); }
+  .call-pill.ringing { animation: ringring 2.4s ease-in-out infinite; }
+  @keyframes ringring {
+    0%, 82%, 100% { transform: rotate(1deg); }
+    85% { transform: rotate(3deg); }
+    89% { transform: rotate(-1.5deg); }
+    93% { transform: rotate(2.5deg); }
+    97% { transform: rotate(0deg); }
+  }
+  .pill-incoming, .pill-oncall { display: flex; align-items: center; gap: 14px; }
+  .pill-oncall { display: none; }
+  .call-pill.in-call .pill-incoming { display: none; }
+  .call-pill.in-call .pill-oncall { display: flex; }
+  .call-btn { cursor: pointer; transition: transform 0.15s ease; }
+  .call-btn:hover { transform: scale(1.08); }
+
+  .wave { display: flex; gap: 3px; align-items: center; height: 26px; padding: 0 4px; }
+  .wave span { width: 4px; border-radius: 2px; background: #30d158; animation: wv 0.9s ease-in-out infinite alternate; }
+  .wave span:nth-child(1) { height: 10px; animation-delay: -0.2s; }
+  .wave span:nth-child(2) { height: 18px; animation-delay: -0.5s; }
+  .wave span:nth-child(3) { height: 24px; animation-delay: -0.1s; }
+  .wave span:nth-child(4) { height: 16px; animation-delay: -0.65s; }
+  .wave span:nth-child(5) { height: 9px; animation-delay: -0.35s; }
+  @keyframes wv { from { transform: scaleY(0.4); } to { transform: scaleY(1); } }
+
+  /* ---------- Breathing demo ---------- */
+  .breathe { background: #fff; text-align: center; padding: 0 24px clamp(90px, 11vh, 130px); }
+  .breathe .kicker { margin-bottom: 14px; }
+  .breathe h2 { font-size: clamp(26px, 3.4vw, 38px); letter-spacing: -0.03em; font-weight: 800; }
+  .breathe h2 .serif { font-weight: 400; }
+  .breath-stage { margin: 44px auto 0; width: 230px; height: 230px; display: grid; place-items: center; position: relative; }
+  .breath-halo {
+    position: absolute; inset: -20px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(127,168,232,0.22), rgba(127,168,232,0) 70%);
+  }
+  .breath-circle {
+    width: 150px; height: 150px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #e6effc, #9dbdee 55%, #6f9ae0);
+    box-shadow: 0 18px 50px rgba(74,127,212,0.35), inset 0 2px 8px rgba(255,255,255,0.7);
+    display: grid; place-items: center;
+    transform: scale(1);
+  }
+  .breath-circle span { color: #fff; font-weight: 600; font-size: 15px; letter-spacing: 0.02em; text-shadow: 0 1px 8px rgba(46,84,150,0.4); }
+  .breath-hint { margin-top: 28px; color: var(--ink-soft); font-size: 15px; }
+
   /* ---------- Responsive ---------- */
   @media (max-width: 880px) {
     .sky .cloud { opacity: 0.4 !important; }
@@ -337,6 +404,44 @@
 </style>
 </head>
 <body>
+
+<!-- Chrome cloud logo (referenced via <use> everywhere) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="chromeGrad" x1="0" y1="8" x2="0" y2="90" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.28" stop-color="#e8f1fb"/>
+      <stop offset="0.47" stop-color="#aebfda"/>
+      <stop offset="0.53" stop-color="#64789e"/>
+      <stop offset="0.63" stop-color="#8ea4c6"/>
+      <stop offset="0.82" stop-color="#cfdcee"/>
+      <stop offset="1" stop-color="#f6faff"/>
+    </linearGradient>
+    <radialGradient id="sheenGrad" cx="0.32" cy="0.2" r="0.75">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="0.45" stop-color="#ffffff" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <symbol id="cloudmark" viewBox="0 0 128 96">
+    <g fill="url(#chromeGrad)">
+      <circle cx="32" cy="60" r="19"/>
+      <circle cx="60" cy="44" r="27"/>
+      <circle cx="92" cy="58" r="21"/>
+      <rect x="16" y="58" width="96" height="26" rx="13"/>
+    </g>
+    <g fill="url(#sheenGrad)">
+      <circle cx="32" cy="60" r="19"/>
+      <circle cx="60" cy="44" r="27"/>
+      <circle cx="92" cy="58" r="21"/>
+      <rect x="16" y="58" width="96" height="26" rx="13"/>
+    </g>
+    <ellipse cx="46" cy="29" rx="15" ry="6.5" fill="#fff" opacity="0.85" transform="rotate(-10 46 29)"/>
+    <circle cx="89" cy="45" r="4.5" fill="#fff" opacity="0.8"/>
+    <ellipse cx="64" cy="79" rx="42" ry="6" fill="#546890" opacity="0.28"/>
+    <ellipse cx="64" cy="83.5" rx="30" ry="2.5" fill="#fff" opacity="0.55"/>
+  </symbol>
+</svg>
 
 <!-- ============ HERO SKY ============ -->
 <section class="sky">
@@ -364,7 +469,7 @@
   <div class="haze"></div>
 
   <nav>
-    <div class="brand"><div class="brand-icon">☁️</div>Cali</div>
+    <div class="brand"><svg class="logo-svg" width="42" height="32"><use href="#cloudmark"/></svg>Cali</div>
     <a class="nav-cta" href="#waitlist">Join the waitlist</a>
   </nav>
 
@@ -381,31 +486,43 @@
     <div class="stage">
       <div class="phone">
         <div class="phone-header">
-          <div class="phone-avatar">☁️</div>
+          <div class="phone-avatar"><svg class="logo-svg" width="27" height="20"><use href="#cloudmark"/></svg></div>
           <div class="phone-name">Cali <span>›</span></div>
         </div>
         <div class="bubbles">
-          <div class="timestamp">Today 9:41 PM</div>
-          <div class="bubble from-user tail-user">long day 😮‍💨 my crush hasn't texted me all day and i'm overthinking everything</div>
-          <div class="bubble from-ai">That silence is loud, I know. Let's get you out of your head for a few minutes.</div>
-          <div class="bubble from-ai tail-ai">Want me to call you? Close your eyes, follow my voice, and let the overthinking go quiet.</div>
-          <div class="bubble from-user tail-user">yes 🧘‍♀️</div>
-          <div class="delivered">Delivered</div>
+          <div class="timestamp anim">Today 9:41 PM</div>
+          <div class="bubble from-user tail-user anim" id="msg1">long day 😮‍💨 my crush hasn't texted me all day and i'm overthinking everything</div>
+          <div class="bubble from-ai typing" id="typingBubble"><span></span><span></span><span></span></div>
+          <div class="bubble from-ai anim" id="msg2">That silence is loud, I know. Let's get you out of your head for a few minutes.</div>
+          <div class="bubble from-ai tail-ai anim" id="msg3">Want me to call you? Close your eyes, follow my voice, and let the overthinking go quiet.</div>
+          <div class="bubble from-user tail-user anim" id="msg4">yes 🧘‍♀️</div>
+          <div class="delivered anim">Delivered</div>
         </div>
       </div>
-      <div class="annotation">
+      <div class="annotation anim">
         answer the phone
         <svg width="42" height="36" viewBox="0 0 42 36" fill="none"><path d="M4 32 C 16 30, 28 22, 34 8" stroke="#2a4a80" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M27 10 L 35 6 L 36 15" stroke="#2a4a80" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
       </div>
-      <div class="call-pill">
-        <div class="call-avatar"></div>
-        <div class="call-meta">
-          <div class="small">incoming call</div>
-          <div class="name">Cali</div>
+      <div class="call-pill anim" id="callPill">
+        <div class="pill-incoming">
+          <div class="call-avatar"></div>
+          <div class="call-meta">
+            <div class="small">incoming call</div>
+            <div class="name">Cali</div>
+          </div>
+          <div class="call-btns">
+            <div class="call-btn decline" id="btnDecline" title="Decline"><svg width="19" height="19" viewBox="0 0 24 24" fill="#fff" style="transform: rotate(135deg)"><path d="M6.6 10.8c1.4 2.7 3.9 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></div>
+            <div class="call-btn accept" id="btnAccept" title="Answer"><svg width="19" height="19" viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8c1.4 2.7 3.9 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></div>
+          </div>
         </div>
-        <div class="call-btns">
-          <div class="call-btn decline"><svg width="19" height="19" viewBox="0 0 24 24" fill="#fff" style="transform: rotate(135deg)"><path d="M6.6 10.8c1.4 2.7 3.9 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></div>
-          <div class="call-btn accept"><svg width="19" height="19" viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8c1.4 2.7 3.9 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></div>
+        <div class="pill-oncall">
+          <div class="call-avatar"></div>
+          <div class="call-meta">
+            <div class="small">Cali</div>
+            <div class="name" id="callTimer">0:00</div>
+          </div>
+          <div class="wave"><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="call-btn decline" id="btnEnd" title="End call"><svg width="19" height="19" viewBox="0 0 24 24" fill="#fff" style="transform: rotate(135deg)"><path d="M6.6 10.8c1.4 2.7 3.9 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></div>
         </div>
       </div>
     </div>
@@ -458,6 +575,17 @@
   </div>
 </section>
 
+<!-- ============ BREATHE ============ -->
+<section class="breathe">
+  <div class="kicker">Try it right now</div>
+  <h2>One breath, <span class="serif">on the house.</span></h2>
+  <div class="breath-stage">
+    <div class="breath-halo"></div>
+    <div class="breath-circle" id="breathCircle"><span id="breathText">breathe in</span></div>
+  </div>
+  <p class="breath-hint">Follow the circle. In through your nose… out through your mouth.</p>
+</section>
+
 <!-- ============ CLOSING ============ -->
 <section class="closing" id="waitlist">
   <div class="cloud cloud-b" style="top: 18%; left: -6%; width: 540px; height: 230px; opacity: 0.8;">
@@ -478,6 +606,102 @@
   <p class="disclaimer">Cali is a wellness and meditation companion, <strong>not a therapist or medical provider</strong>. It doesn't diagnose, treat, or replace professional care. If you're in crisis or thinking about harming yourself, call or text <strong>988</strong> (Suicide &amp; Crisis Lifeline) or dial <strong>911</strong>.</p>
   <p>© 2026 Cali</p>
 </footer>
+
+<script>
+(() => {
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = s => document.querySelector(s);
+
+  // Cloud parallax on scroll
+  const clouds = [...document.querySelectorAll('.sky .cloud')];
+  if (!reduced && clouds.length) {
+    const speeds = clouds.map((_, i) => 0.06 + (i % 3) * 0.05);
+    let ticking = false;
+    addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        clouds.forEach((c, i) => c.style.translate = `0 ${scrollY * speeds[i]}px`);
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+
+  // Chat plays itself out
+  const typing = $('#typingBubble');
+  const pill = $('#callPill');
+  const steps = [
+    { show: '.timestamp', wait: 500 },
+    { show: '#msg1', wait: 900 },
+    { typingOn: true, wait: 1400 },
+    { show: '#msg2', typingOff: true, wait: 900 },
+    { typingBefore: '#msg3', wait: 1300 },
+    { show: '#msg3', typingOff: true, wait: 900 },
+    { show: '#msg4', wait: 700 },
+    { show: '.delivered', wait: 800 },
+    { pill: true, wait: 0 },
+  ];
+  let t = reduced ? 0 : 600;
+  steps.forEach(s => {
+    setTimeout(() => {
+      if (s.typingBefore) typing.parentNode.insertBefore(typing, $(s.typingBefore));
+      if (s.typingOn || s.typingBefore) typing.classList.add('show');
+      if (s.typingOff) typing.classList.remove('show');
+      if (s.show) $(s.show).classList.add('show');
+      if (s.pill) {
+        pill.classList.add('show');
+        if (!reduced) pill.classList.add('ringing');
+        $('.annotation').classList.add('show');
+      }
+    }, t);
+    t += reduced ? 0 : s.wait;
+  });
+
+  // Call pill: answer / hang up / decline
+  let timerId = null, secs = 0;
+  const fmt = n => Math.floor(n / 60) + ':' + String(n % 60).padStart(2, '0');
+  $('#btnAccept').addEventListener('click', () => {
+    pill.classList.add('in-call');
+    pill.classList.remove('ringing');
+    secs = 0;
+    $('#callTimer').textContent = '0:00';
+    timerId = setInterval(() => { $('#callTimer').textContent = fmt(++secs); }, 1000);
+  });
+  $('#btnEnd').addEventListener('click', () => {
+    pill.classList.remove('in-call');
+    clearInterval(timerId);
+    if (!reduced) pill.classList.add('ringing');
+  });
+  $('#btnDecline').addEventListener('click', () => {
+    pill.classList.remove('show');
+    setTimeout(() => pill.classList.add('show'), 1600); // Cali tries again
+  });
+
+  // Breathing demo
+  const circle = $('#breathCircle'), label = $('#breathText');
+  if (circle) {
+    if (reduced) {
+      label.textContent = 'breathe in… and out';
+    } else {
+      const phases = [
+        ['breathe in', 4000, 1.32],
+        ['hold', 1800, 1.32],
+        ['breathe out', 5200, 1],
+      ];
+      let i = 0;
+      const step = () => {
+        const [txt, dur, scale] = phases[i];
+        label.textContent = txt;
+        circle.style.transition = 'transform ' + dur + 'ms cubic-bezier(.45,0,.55,1)';
+        circle.style.transform = 'scale(' + scale + ')';
+        i = (i + 1) % phases.length;
+        setTimeout(step, dur);
+      };
+      step();
+    }
+  }
+})();
+</script>
 
 </body>
 </html>
