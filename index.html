@@ -377,38 +377,49 @@
 <!-- Chrome cloud logo (referenced via <use> everywhere) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <linearGradient id="chromeGrad" x1="0" y1="8" x2="0" y2="90" gradientUnits="userSpaceOnUse">
+    <clipPath id="cloudClip">
+      <circle cx="32" cy="60" r="19"/>
+      <circle cx="60" cy="44" r="27"/>
+      <circle cx="92" cy="58" r="21"/>
+      <rect x="16" y="58" width="96" height="26" rx="13"/>
+    </clipPath>
+    <linearGradient id="chromeV" x1="0" y1="14" x2="0" y2="88" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#ffffff"/>
-      <stop offset="0.28" stop-color="#e8f1fb"/>
-      <stop offset="0.47" stop-color="#aebfda"/>
-      <stop offset="0.53" stop-color="#64789e"/>
-      <stop offset="0.63" stop-color="#8ea4c6"/>
-      <stop offset="0.82" stop-color="#cfdcee"/>
-      <stop offset="1" stop-color="#f6faff"/>
+      <stop offset="0.20" stop-color="#f0f5fd"/>
+      <stop offset="0.40" stop-color="#c2d0e8"/>
+      <stop offset="0.48" stop-color="#8195bb"/>
+      <stop offset="0.51" stop-color="#3b4d70"/>
+      <stop offset="0.56" stop-color="#93a9ca"/>
+      <stop offset="0.72" stop-color="#e2ebf7"/>
+      <stop offset="0.88" stop-color="#c3d2e8"/>
+      <stop offset="1" stop-color="#f2f7fe"/>
     </linearGradient>
-    <radialGradient id="sheenGrad" cx="0.32" cy="0.2" r="0.75">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
-      <stop offset="0.45" stop-color="#ffffff" stop-opacity="0.25"/>
+    <linearGradient id="rimGrad" x1="0" y1="14" x2="0" y2="88" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#aebfda"/>
+      <stop offset="0.5" stop-color="#5a6f96"/>
+      <stop offset="1" stop-color="#2f4166"/>
+    </linearGradient>
+    <radialGradient id="sheenBig" cx="0.30" cy="0.14" r="0.55">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.7"/>
+      <stop offset="0.4" stop-color="#ffffff" stop-opacity="0.22"/>
       <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <symbol id="cloudmark" viewBox="0 0 128 96">
-    <g fill="url(#chromeGrad)">
+    <g stroke="url(#rimGrad)" stroke-width="2.4" fill="url(#rimGrad)" opacity="0.9">
       <circle cx="32" cy="60" r="19"/>
       <circle cx="60" cy="44" r="27"/>
       <circle cx="92" cy="58" r="21"/>
       <rect x="16" y="58" width="96" height="26" rx="13"/>
     </g>
-    <g fill="url(#sheenGrad)">
-      <circle cx="32" cy="60" r="19"/>
-      <circle cx="60" cy="44" r="27"/>
-      <circle cx="92" cy="58" r="21"/>
-      <rect x="16" y="58" width="96" height="26" rx="13"/>
+    <g clip-path="url(#cloudClip)">
+      <rect x="0" y="0" width="128" height="96" fill="url(#chromeV)"/>
+      <rect x="0" y="0" width="128" height="96" fill="url(#sheenBig)"/>
+      <ellipse cx="64" cy="86" rx="52" ry="10" fill="#3c4f74" opacity="0.35"/>
+      <ellipse cx="64" cy="91" rx="40" ry="6" fill="#ffffff" opacity="0.55"/>
     </g>
-    <ellipse cx="46" cy="29" rx="15" ry="6.5" fill="#fff" opacity="0.85" transform="rotate(-10 46 29)"/>
-    <circle cx="89" cy="45" r="4.5" fill="#fff" opacity="0.8"/>
-    <ellipse cx="64" cy="79" rx="42" ry="6" fill="#546890" opacity="0.28"/>
-    <ellipse cx="64" cy="83.5" rx="30" ry="2.5" fill="#fff" opacity="0.55"/>
+    <ellipse cx="45" cy="27" rx="17" ry="7.5" fill="#fff" opacity="0.95" transform="rotate(-12 45 27)"/>
+    <circle cx="90" cy="44" r="5" fill="#fff" opacity="0.9"/>
   </symbol>
 </svg>
 
