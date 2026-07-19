@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Production call sheet for the Cali launch film — Finding Peace Within Chaos. One shoot day across San Francisco, sunset finale at Battery Spencer.">
+<title>CALI — Call Sheet · "Finding Peace Within Chaos"</title>
+<style>
+  :root{
+    --paper:#FBF8F2;
+    --ink:#242C33;
+    --ink-soft:#5A6670;
+    --line:#D9D2C4;
+    --amber:#C07A2E;
+    --amber-soft:#F3E2C8;
+    --fog:#5D7A8C;
+    --fog-soft:#E3EAEE;
+    --chaos:#66794A;
+    --chaos-soft:#E6EAD9;
+    --card:#FFFFFF;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#151A20;
+      --ink:#E8E3D8;
+      --ink-soft:#9AA4AC;
+      --line:#333C45;
+      --amber:#D99A4E;
+      --amber-soft:#3A2E1C;
+      --fog:#8FB0C2;
+      --fog-soft:#1F2B33;
+      --chaos:#9AB07A;
+      --chaos-soft:#28301F;
+      --card:#1C232B;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#151A20; --ink:#E8E3D8; --ink-soft:#9AA4AC; --line:#333C45;
+    --amber:#D99A4E; --amber-soft:#3A2E1C; --fog:#8FB0C2; --fog-soft:#1F2B33;
+    --chaos:#9AB07A; --chaos-soft:#28301F; --card:#1C232B;
+  }
+  :root[data-theme="light"]{
+    --paper:#FBF8F2; --ink:#242C33; --ink-soft:#5A6670; --line:#D9D2C4;
+    --amber:#C07A2E; --amber-soft:#F3E2C8; --fog:#5D7A8C; --fog-soft:#E3EAEE;
+    --chaos:#66794A; --chaos-soft:#E6EAD9; --card:#FFFFFF;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:var(--sans); font-size:15px; line-height:1.5;
+    margin:0; padding:32px 20px 64px;
+  }
+  .sheet{max-width:880px; margin:0 auto}
+
+  /* ---------- header ---------- */
+  header{border-bottom:3px solid var(--ink); padding-bottom:18px; margin-bottom:22px}
+  .prod-line{
+    font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--ink-soft); display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;
+  }
+  h1{
+    font-family:var(--mono); font-weight:700; font-size:clamp(26px,4.5vw,38px);
+    letter-spacing:-.01em; margin:10px 0 4px; text-wrap:balance;
+  }
+  h1 .strike{text-decoration:line-through; text-decoration-thickness:3px; color:var(--ink-soft)}
+  h1 .amber{color:var(--amber)}
+  .logline{color:var(--ink-soft); max-width:62ch; margin:0}
+
+  /* key times strip */
+  .times{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:1px; background:var(--line); border:1px solid var(--line);
+    margin-top:18px; border-radius:4px; overflow:hidden;
+  }
+  .times div{background:var(--card); padding:10px 12px}
+  .times .k{font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+  .times .v{font-size:19px; font-weight:700; font-variant-numeric:tabular-nums; margin-top:2px}
+  .times .v small{font-size:12px; font-weight:400; color:var(--ink-soft)}
+  .times .sunset .v{color:var(--amber)}
+
+  /* ---------- section titles ---------- */
+  h2{
+    font-family:var(--mono); font-size:13px; letter-spacing:.16em; text-transform:uppercase;
+    border-bottom:1px solid var(--line); padding-bottom:6px; margin:34px 0 14px;
+    display:flex; align-items:baseline; gap:10px;
+  }
+  h2 .no{color:var(--amber)}
+
+  /* ---------- schedule blocks ---------- */
+  .block{
+    display:grid; grid-template-columns:118px 1fr; gap:0;
+    border:1px solid var(--line); border-radius:4px; background:var(--card);
+    margin-bottom:12px; overflow:hidden;
+  }
+  .block .when{
+    padding:14px; border-right:1px solid var(--line);
+    font-family:var(--mono); font-variant-numeric:tabular-nums;
+  }
+  .block .when .t{font-size:16px; font-weight:700; line-height:1.3}
+  .block .when .d{font-size:11px; color:var(--ink-soft); margin-top:4px}
+  .block .what{padding:14px 16px}
+  .tag{
+    display:inline-block; font-family:var(--mono); font-size:10px; font-weight:700;
+    letter-spacing:.12em; text-transform:uppercase; padding:2px 8px; border-radius:3px; margin-bottom:6px;
+  }
+  .tag.chaos{background:var(--chaos-soft); color:var(--chaos)}
+  .tag.move{background:var(--fog-soft); color:var(--fog)}
+  .tag.calm{background:var(--amber-soft); color:var(--amber)}
+  .block h3{margin:0 0 2px; font-size:16px}
+  .loc{font-size:13px; color:var(--ink-soft); margin:0 0 8px}
+  .loc b{color:var(--ink); font-weight:600}
+  .shots{margin:0; padding-left:18px}
+  .shots li{margin:3px 0}
+  .cam{
+    font-family:var(--mono); font-size:11.5px; color:var(--ink-soft);
+    border-top:1px dashed var(--line); margin-top:10px; padding-top:8px;
+  }
+  .cam b{color:var(--amber); font-weight:700}
+  .block.hero{border-left:4px solid var(--amber)}
+
+  /* ---------- two-col info ---------- */
+  .cols{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media (max-width:640px){
+    .cols{grid-template-columns:1fr}
+    .block{grid-template-columns:1fr}
+    .block .when{border-right:none; border-bottom:1px solid var(--line); display:flex; gap:10px; align-items:baseline}
+  }
+  .card{border:1px solid var(--line); border-radius:4px; background:var(--card); padding:14px 16px}
+  .card h4{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 8px}
+  .card ul{margin:0; padding-left:18px}
+  .card li{margin:3px 0}
+  .card p{margin:6px 0}
+  table{width:100%; border-collapse:collapse; font-size:13.5px}
+  td{padding:5px 8px 5px 0; vertical-align:top}
+  td:first-child{font-family:var(--mono); font-size:11.5px; color:var(--ink-soft); white-space:nowrap; width:118px}
+  .rule-amber{color:var(--amber); font-weight:700}
+
+  /* dialogue */
+  .vo{
+    border-left:3px solid var(--amber); background:var(--amber-soft);
+    padding:10px 14px; border-radius:0 4px 4px 0; margin:10px 0;
+    font-size:14.5px;
+  }
+  .vo .who{font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--amber); display:block; margin-bottom:2px}
+
+  footer{
+    margin-top:36px; padding-top:14px; border-top:3px solid var(--ink);
+    font-family:var(--mono); font-size:11px; color:var(--ink-soft);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  @media print{
+    body{padding:0; font-size:12px; background:#fff; color:#1a1a1a}
+    .times .v{font-size:15px}
+    .block,.card{break-inside:avoid}
+    header{margin-bottom:12px}
+    h2{margin:18px 0 8px}
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+<header>
+  <div class="prod-line">
+    <span>CALI — a call away from calm</span>
+    <span>Call sheet · Day 1 of 1</span>
+  </div>
+  <h1><span class="strike">chaos</span> <span class="amber">FINDING PEACE WITHIN CHAOS</span></h1>
+  <p class="logline">One girl, one afternoon, no dialogue. Chaos shot handheld at 1/15 — calm locked off at 1/48. All San Francisco; finale overlooking the Golden Gate Bridge from Battery Spencer.</p>
+
+  <div class="times">
+    <div><span class="k">Crew call</span><div class="v">2:30 PM <small>Union Sq</small></div></div>
+    <div><span class="k">First shot</span><div class="v">3:00 PM</div></div>
+    <div><span class="k">Golden hour</span><div class="v">7:40 PM</div></div>
+    <div class="sunset"><span class="k">Sunset</span><div class="v">8:29 PM</div></div>
+    <div><span class="k">Blue hour ends</span><div class="v">≈9:05 PM</div></div>
+    <div><span class="k">Wrap</span><div class="v">9:15 PM</div></div>
+  </div>
+</header>
+
+<h2><span class="no">01</span> Schedule</h2>
+
+<div class="block">
+  <div class="when"><div class="t">2:30<br>–3:00</div><div class="d">30 min</div></div>
+  <div class="what">
+    <span class="tag move">Crew call</span>
+    <h3>Meet, gear check, sound check</h3>
+    <p class="loc"><b>Union Square</b> · 333 Post St steps · park at Sutter-Stockton garage</p>
+    <ul class="shots">
+      <li>Confirm: batteries charged, cards empty, VND filter mounted, tripod in car for later.</li>
+      <li>Talent: phone at 100%, "Cali" contact + ring screen ready, tote bag prop, layers packed for Headlands wind.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="block">
+  <div class="when"><div class="t">3:00<br>–3:45</div><div class="d">45 min</div></div>
+  <div class="what">
+    <span class="tag chaos">Chaos · Sc. 1</span>
+    <h3>"The Crowd"</h3>
+    <p class="loc"><b>Powell &amp; Market cable car turnaround → Union Square</b></p>
+    <ul class="shots">
+      <li><b>Signature:</b> she stands dead-still mid-sidewalk while tourists smear past both directions (hold 10s+ takes).</li>
+      <li>Slow push-in on her face in the queue crowd.</li>
+      <li>Insert: phone face-up, notifications stacking, 3:04 PM on the clock.</li>
+      <li>Wild sound: cable car bell, street performers, crowd walla.</li>
+    </ul>
+    <div class="cam">24 fps · <b>1/15</b> · f/4–f/8 · ISO 100 · VND ≈ND32 · handheld, slightly tilted horizon</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="when"><div class="t">4:00<br>–4:45</div><div class="d">45 min</div></div>
+  <div class="what">
+    <span class="tag chaos">Chaos · Sc. 2</span>
+    <h3>"The Errands"</h3>
+    <p class="loc"><b>Chinatown — Stockton St between Clay &amp; Broadway</b></p>
+    <ul class="shots">
+      <li>She squeezes through the produce-stand sidewalk, tote bag, shoppers ghosting between her and lens.</li>
+      <li>Doorway frame-within-frame: her boxed in, foreground traffic smearing.</li>
+      <li>Close: hands, bags, register beeps; shouted Cantonese as texture.</li>
+    </ul>
+    <div class="cam">24 fps · <b>1/15</b> · f/4 · ISO 100 · VND ≈ND16 (shaded street) · handheld</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="when"><div class="t">5:00<br>–5:45</div><div class="d">45 min</div></div>
+  <div class="what">
+    <span class="tag chaos">Chaos · Sc. 3</span>
+    <h3>"The Machine" — rush hour</h3>
+    <p class="loc"><b>Montgomery &amp; Market</b> · BART escalator + crosswalk</p>
+    <ul class="shots">
+      <li>Top of escalator: commuter river splits around her (river-of-ghosts shot).</li>
+      <li>Crosswalk: light changes, everyone surges, she doesn't move.</li>
+      <li>Muni entrance fluorescents for the sick-green cast (this is the "before" grade reference).</li>
+    </ul>
+    <div class="cam">24 fps · <b>1/15 → try 1/8</b> for one extreme take · f/5.6 · ISO 100 · VND ≈ND32</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="when"><div class="t">5:50<br>–6:20</div><div class="d">30 min</div></div>
+  <div class="what">
+    <span class="tag chaos">Chaos · Sc. 4</span>
+    <h3>"Head Noise" — bus interior</h3>
+    <p class="loc"><b>Any westbound Muni from Montgomery</b> (ride 3–4 stops, return)</p>
+    <ul class="shots">
+      <li>Temple against the glass, window reflections doubling her face.</li>
+      <li>Tunnel-light flicker at 1/15 (hallucinatory — this is the break-point beat).</li>
+      <li>Tight CU: eyes squeeze shut. <b>Last chaos frame of the film.</b></li>
+    </ul>
+    <div class="cam">24 fps · <b>1/8–1/15</b> · f/4 · ISO 100–400 as needed inside · no ND in tunnel</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="when"><div class="t">6:30<br>–7:10</div><div class="d">40 min</div></div>
+  <div class="what">
+    <span class="tag move">Company move</span>
+    <h3>Drive: FiDi → Marin Headlands (across the bridge)</h3>
+    <p class="loc"><b>US-101 N over Golden Gate Bridge → Alexander Ave exit → Conzelman Rd</b></p>
+    <ul class="shots">
+      <li>Passenger-seat plates: city smearing past the window at 1/15 — free transition footage.</li>
+      <li>Crossing the bridge itself: towers sweeping overhead (this can cut right before the snipe).</li>
+    </ul>
+    <div class="cam">Traffic buffer built in — if it's moving well you gain 15 min of scout time.</div>
+  </div>
+</div>
+
+<div class="block hero">
+  <div class="when"><div class="t">7:10<br>–7:40</div><div class="d">30 min</div></div>
+  <div class="what">
+    <span class="tag calm">Setup</span>
+    <h3>Park, walk in, build the calm frame</h3>
+    <p class="loc"><b>Battery Spencer, Conzelman Rd, Sausalito</b> · Plus code <b>RGM9+4V</b> · 5-min walk from pullout</p>
+    <ul class="shots">
+      <li>Parking is a tiny pullout — overflow along Conzelman Rd, walk back (bring nothing you can't carry in one trip; leave zero valuables visible in the car).</li>
+      <li>Pick her mark: railing/rock with both bridge towers + city skyline behind.</li>
+      <li>Tripod set, swap to calm settings, white balance for golden hour, lav mic on talent under jacket.</li>
+    </ul>
+    <div class="cam">Switch now: 24 fps · <b>1/48</b> (1/30 if light drops) · f/4 · ISO 100 · ND off by ~7:45 · <b>tripod, level horizon — first level frame of the film</b></div>
+  </div>
+</div>
+
+<div class="block hero">
+  <div class="when"><div class="t">7:40<br>–8:29</div><div class="d">49 min</div></div>
+  <div class="what">
+    <span class="tag calm">Calm · Sc. 5</span>
+    <h3>"The Snipe" — the Cali call · golden hour → sunset</h3>
+    <p class="loc"><b>Battery Spencer overlook</b> — Golden Gate Bridge below, city beyond</p>
+    <ul class="shots">
+      <li><b>The cut:</b> from black (bus CU) smash to locked-off wide — bridge, amber light, wind only. Record 30s of clean atmosphere first; the silence is the edit's payload.</li>
+      <li>She sits, one full audible exhale (mic'd close).</li>
+      <li>Insert over shoulder: phone screen, "Cali" ringing — diegetic, real phone, no UI mockup.</li>
+      <li>Her face as the voice answers: shoulders drop, jaw unclenches, eyes stay open. No acted bliss — tired-but-lighter.</li>
+      <li>Long-lens profile: her small against the towers as light goes amber → pink.</li>
+    </ul>
+    <div class="vo"><span class="who">Cali (V.O., phone — the only intelligible words in the film)</span>
+    "Hey. I'm here. Let's take one breath together — just one."</div>
+    <div class="cam">24 fps · <b>1/48</b> · f/4 · ISO 100 · tripod · crisp motion = the whole point</div>
+  </div>
+</div>
+
+<div class="block hero">
+  <div class="when"><div class="t">8:29<br>–9:00</div><div class="d">31 min</div></div>
+  <div class="what">
+    <span class="tag calm">Calm · Sc. 6</span>
+    <h3>"After" — blue hour + end card plates</h3>
+    <p class="loc"><b>Battery Spencer overlook</b></p>
+    <ul class="shots">
+      <li>Wide: tiny silhouette, bridge lights on, ten thousand city lights — every light a place she was stressed today.</li>
+      <li>Hold each frame 20s+ for end-card text overlay room.</li>
+      <li>Optional: headlight streaks on the bridge deck at 1/15 — chaos texture, now beautiful and far away.</li>
+    </ul>
+    <div class="cam">24 fps · 1/30 → 1/15 as light dies · open to f/2.8–f/4 · ISO 100–800 · tripod</div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="when"><div class="t">9:00<br>–9:15</div><div class="d">15 min</div></div>
+  <div class="what">
+    <span class="tag move">Wrap</span>
+    <h3>Pack out, card backup in car before driving</h3>
+    <p class="loc">Back over the bridge — grab one handheld night plate through the windshield if traffic is light.</p>
+  </div>
+</div>
+
+<h2><span class="no">02</span> Locations &amp; logistics</h2>
+<div class="cols">
+  <div class="card">
+    <h4>Finale location</h4>
+    <table>
+      <tr><td>Spot</td><td><b>Battery Spencer</b>, Marin Headlands (GGNRA)</td></tr>
+      <tr><td>Address</td><td>Conzelman Rd, Sausalito, CA 94965 · Plus code <b>RGM9+4V</b></td></tr>
+      <tr><td>Why</td><td>Highest close-up angle on the bridge — towers at eye level, city skyline behind. Sunset light hits the talent and the bridge face.</td></tr>
+      <tr><td>Wind</td><td>Cold and real, even July. Jacket that reads on camera; hair plan; wind muff on every mic.</td></tr>
+      <tr><td class="rule-amber">Fog plan</td><td>July evenings Karl the Fog often swallows the towers. <b>If fog: shoot it.</b> Ghost-bridge at 1/30 is on-theme (calm ≠ postcard). Full whiteout backup: <b>Fort Point / Crissy Field</b> on the SF side, usually below the fog deck.</td></tr>
+      <tr><td>Permits</td><td>Handheld/tripod, crew of 2–3, public overlook — low-impact, no permit needed. Don't block the path or fly a drone (GGNRA: prohibited).</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Camera recipe (whole film)</h4>
+    <table>
+      <tr><td>Base</td><td>24 fps · Manual exposure · ISO 100 · f/4–f/8 outdoors</td></tr>
+      <tr><td class="rule-amber">Chaos</td><td><b>1/15 handheld</b> (1/8 for one extreme take per scene, 1/30 if too mushy)</td></tr>
+      <tr><td class="rule-amber">Calm</td><td><b>1/48 on tripod</b> — the world stops smearing when Cali answers</td></tr>
+      <tr><td>ND</td><td>Variable ND (ND16–ND64) mandatory in daylight at 1/15; off by ~7:45 PM</td></tr>
+      <tr><td>Grade ref</td><td>Chaos = fluorescent green cast · Calm = amber/rose → blue hour</td></tr>
+      <tr><td>Framing</td><td>Chaos: tilted, tight, faces half-blocked · Calm: level, negative space, huge sky</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Gear checklist</h4>
+    <ul>
+      <li>Camera + 2 lenses (24–35mm chaos · 70mm+ for finale profile)</li>
+      <li>Variable ND (the day does not work without it)</li>
+      <li>Tripod (stays in car until the move)</li>
+      <li>4+ batteries, 2+ cards, card reader for wrap backup</li>
+      <li>Audio recorder + lav (wind muff!) — wild ambience at every location</li>
+      <li>Talent kit: layers/jacket, hair ties, water, tote prop, phone charger brick</li>
+      <li>Print this sheet — Headlands cell signal is spotty</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>Sound design capture list</h4>
+    <ul>
+      <li>Cable car bell + Powell St walla (Sc. 1)</li>
+      <li>Stockton St market shouts, register beeps (Sc. 2)</li>
+      <li>BART escalator drone, crosswalk chirp (Sc. 3)</li>
+      <li>Bus interior rattle + tunnel screech (Sc. 4)</li>
+      <li><b>30s clean wind + distant surf at Battery Spencer</b> (Sc. 5 — the silence that makes the snipe land)</li>
+      <li>Record Cali V.O. line separately in a quiet room; phone-EQ it in post</li>
+    </ul>
+  </div>
+</div>
+
+<h2><span class="no">03</span> End card (post reference)</h2>
+<div class="card">
+  <p style="font-family:var(--mono)">the noise isn't going anywhere.<br>
+  <span style="text-decoration:line-through">the noise</span> <b style="color:var(--amber)">you don't have to carry it.</b><br><br>
+  <b>Cali. A call away from calm.</b> — elsacai.com/cali</p>
+</div>
+
+<footer>
+  <span>CALI · "Finding Peace Within Chaos" · 1 shoot day · San Francisco + Marin Headlands</span>
+  <span>Sunset 8:29 PM · print me</span>
+</footer>
+</div>
+
+</body>
+</html>
