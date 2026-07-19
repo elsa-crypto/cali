@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cali — text to meditate, answer the phone</title>
 <meta name="description" content="Text Cali when you want to meditate. It calls you and guides a session made for you — no app, no library, no screen.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☁️</text></svg>">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -51,7 +51,7 @@
     padding: 26px clamp(22px, 5vw, 58px);
   }
   .brand { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 700; font-size: 21px; letter-spacing: -0.02em; }
-  .logo-svg { filter: drop-shadow(0 3px 8px rgba(30, 50, 90, 0.35)); }
+  .logo-svg { filter: drop-shadow(0 3px 8px rgba(30, 50, 90, 0.35)); height: auto; display: block; }
   .nav-cta {
     color: #fff; text-decoration: none; font-weight: 600; font-size: 15px;
     background: rgba(255,255,255,0.2);
@@ -374,59 +374,10 @@
 </head>
 <body>
 
-<!-- Chrome cloud logo (referenced via <use> everywhere) -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <clipPath id="cloudClip">
-      <circle cx="32" cy="60" r="19"/>
-      <circle cx="60" cy="44" r="27"/>
-      <circle cx="92" cy="58" r="21"/>
-      <rect x="16" y="58" width="96" height="26" rx="13"/>
-    </clipPath>
-    <linearGradient id="chromeV" x1="0" y1="14" x2="0" y2="88" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ffffff"/>
-      <stop offset="0.20" stop-color="#f0f5fd"/>
-      <stop offset="0.40" stop-color="#c2d0e8"/>
-      <stop offset="0.48" stop-color="#8195bb"/>
-      <stop offset="0.51" stop-color="#3b4d70"/>
-      <stop offset="0.56" stop-color="#93a9ca"/>
-      <stop offset="0.72" stop-color="#e2ebf7"/>
-      <stop offset="0.88" stop-color="#c3d2e8"/>
-      <stop offset="1" stop-color="#f2f7fe"/>
-    </linearGradient>
-    <linearGradient id="rimGrad" x1="0" y1="14" x2="0" y2="88" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#aebfda"/>
-      <stop offset="0.5" stop-color="#5a6f96"/>
-      <stop offset="1" stop-color="#2f4166"/>
-    </linearGradient>
-    <radialGradient id="sheenBig" cx="0.30" cy="0.14" r="0.55">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.7"/>
-      <stop offset="0.4" stop-color="#ffffff" stop-opacity="0.22"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <symbol id="cloudmark" viewBox="0 0 128 96">
-    <g stroke="url(#rimGrad)" stroke-width="2.4" fill="url(#rimGrad)" opacity="0.9">
-      <circle cx="32" cy="60" r="19"/>
-      <circle cx="60" cy="44" r="27"/>
-      <circle cx="92" cy="58" r="21"/>
-      <rect x="16" y="58" width="96" height="26" rx="13"/>
-    </g>
-    <g clip-path="url(#cloudClip)">
-      <rect x="0" y="0" width="128" height="96" fill="url(#chromeV)"/>
-      <rect x="0" y="0" width="128" height="96" fill="url(#sheenBig)"/>
-      <ellipse cx="64" cy="86" rx="52" ry="10" fill="#3c4f74" opacity="0.35"/>
-      <ellipse cx="64" cy="91" rx="40" ry="6" fill="#ffffff" opacity="0.55"/>
-    </g>
-    <ellipse cx="45" cy="27" rx="17" ry="7.5" fill="#fff" opacity="0.95" transform="rotate(-12 45 27)"/>
-    <circle cx="90" cy="44" r="5" fill="#fff" opacity="0.9"/>
-  </symbol>
-</svg>
-
 <!-- ============ HERO SKY ============ -->
 <section class="sky">
   <nav>
-    <div class="brand"><svg class="logo-svg" width="42" height="32"><use href="#cloudmark"/></svg>Cali</div>
+    <div class="brand"><img class="logo-svg" src="assets/logo-small.png" alt="" width="46">Cali</div>
     <a class="nav-cta" href="#waitlist">Join the waitlist</a>
   </nav>
 
@@ -443,7 +394,7 @@
     <div class="stage">
       <div class="phone">
         <div class="phone-header">
-          <div class="phone-avatar"><svg class="logo-svg" width="27" height="20"><use href="#cloudmark"/></svg></div>
+          <div class="phone-avatar"><img class="logo-svg" src="assets/logo-small.png" alt="" width="30"></div>
           <div class="phone-name">Cali <span>›</span></div>
         </div>
         <div class="bubbles">
