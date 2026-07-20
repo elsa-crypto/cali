@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cali — text to meditate, answer the phone</title>
-<meta name="description" content="Text Cali when you want to meditate. It calls you and guides a session made for you — no app, no library, no screen.">
+<title>Cali, the AI friend that calls you to meditate</title>
+<meta name="description" content="Text Cali when you want to meditate. She calls you and guides a session made for you. No app, no library, no screen.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -36,6 +36,7 @@
   .sky {
     position: relative;
     min-height: 100vh;
+    min-height: 100svh;
     /* real sky: two palms against blue sky (Unsplash photo-1702062372821, saved locally), gradient as fallback while it loads */
     background:
       linear-gradient(180deg, rgba(16, 38, 84, 0.22) 0%, rgba(16, 38, 84, 0.08) 38%, rgba(16, 38, 84, 0) 70%),
@@ -67,8 +68,13 @@
     display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
     gap: clamp(24px, 4vw, 60px);
     align-items: center;
-    padding: clamp(20px, 5vh, 60px) clamp(22px, 5vw, 58px) 150px;
+    padding: clamp(20px, 5vh, 60px) clamp(22px, 5vw, 58px) 70px;
     max-width: 1220px; margin: 0 auto;
+  }
+  .hero-copy {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 90px;
   }
 
   h1 {
@@ -90,15 +96,15 @@
   }
 
   .hero-sub {
-    margin-top: 22px;
     color: rgba(255,255,255,0.94);
     font-size: clamp(17px, 1.6vw, 20px);
     line-height: 1.55;
-    max-width: 46ch;
+    max-width: 52ch;
+    margin: 0 auto;
     text-shadow: 0 1px 18px rgba(46, 84, 150, 0.3);
   }
 
-  .hero-actions { margin-top: 34px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .hero-actions { margin-top: 26px; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
   .btn-primary {
     display: inline-flex; align-items: center; gap: 9px;
     background: #fff; color: var(--ink);
@@ -358,10 +364,9 @@
       content: ''; position: absolute; inset: 0; z-index: 1;
       background: rgba(16, 38, 84, 0.22); pointer-events: none;
     }
-    .hero { grid-template-columns: 1fr; padding-bottom: 120px; text-align: center; }
-    .hero-sub { margin-left: auto; margin-right: auto; }
-    .hero-actions { justify-content: center; }
-    .stage { margin-top: 26px; }
+    .hero { grid-template-columns: 1fr; padding-bottom: 90px; text-align: center; }
+    .hero-copy { margin-top: 70px; }
+    .stage { margin-top: 20px; }
     .steps { grid-template-columns: 1fr 1fr; }
     .call-pill { right: 4px; }
   }
@@ -382,14 +387,7 @@
   </nav>
 
   <div class="hero">
-    <div>
-      <h1>Text me when you want to meditate. <span class="serif" style="display:block">I'll <span class="circled">call you.<svg viewBox="0 0 100 40" preserveAspectRatio="none"><ellipse cx="50" cy="20" rx="47" ry="17" fill="none" stroke="#fff" stroke-width="1.6" opacity="0.9"/></svg></span></span></h1>
-      <p class="hero-sub">Cali is an AI friend who meditates with you over a phone call. Text when you want a few calm minutes, answer the phone, and follow a session made just for you — no app, no library, no screen.</p>
-      <div class="hero-actions">
-        <a class="btn-primary" href="#waitlist">💬&ensp;Join the waitlist</a>
-        <span class="hero-note">No app. Just your Messages.</span>
-      </div>
-    </div>
+    <h1>Text me when you want to meditate. <span class="serif" style="display:block">I'll <span class="circled">call you.<svg viewBox="0 0 100 40" preserveAspectRatio="none"><ellipse cx="50" cy="20" rx="47" ry="17" fill="none" stroke="#fff" stroke-width="1.6" opacity="0.9"/></svg></span></span></h1>
 
     <div class="stage">
       <div class="phone">
@@ -398,19 +396,19 @@
           <div class="phone-name">Cali <span>›</span></div>
         </div>
         <div class="bubbles">
-          <div class="timestamp anim">Today 9:41 PM</div>
-          <div class="bubble from-user tail-user anim" id="msg1">long day 😮‍💨 my crush hasn't texted me all day and i'm overthinking everything</div>
-          <div class="bubble from-ai anim" id="msg2">That silence is loud, I know. Let's get you out of your head for a few minutes.</div>
-          <div class="bubble from-ai tail-ai anim" id="msg3">Want me to call you? Close your eyes, follow my voice, and let the overthinking go quiet.</div>
-          <div class="bubble from-user tail-user anim" id="msg4">yes 🧘‍♀️</div>
-          <div class="delivered anim">Delivered</div>
+          <div class="timestamp">Today 9:41 PM</div>
+          <div class="bubble from-user tail-user" id="msg1">long day 😮‍💨 my crush hasn't texted me all day and i'm overthinking everything</div>
+          <div class="bubble from-ai" id="msg2">That silence is loud, I know. Let's get you out of your head for a few minutes.</div>
+          <div class="bubble from-ai tail-ai" id="msg3">Want me to call you? Close your eyes, follow my voice, and let the overthinking go quiet.</div>
+          <div class="bubble from-user tail-user" id="msg4">yes 🧘‍♀️</div>
+          <div class="delivered">Delivered</div>
         </div>
       </div>
-      <div class="annotation anim">
+      <div class="annotation">
         answer the phone
         <svg width="42" height="36" viewBox="0 0 42 36" fill="none" style="filter: drop-shadow(0 1px 6px rgba(20,40,90,0.5))"><path d="M4 32 C 16 30, 28 22, 34 8" stroke="#fff" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M27 10 L 35 6 L 36 15" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
       </div>
-      <div class="call-pill anim" id="callPill">
+      <div class="call-pill" id="callPill">
         <div class="pill-incoming">
           <div class="call-avatar"></div>
           <div class="call-meta">
@@ -433,13 +431,20 @@
         </div>
       </div>
     </div>
+
+    <div class="hero-copy">
+      <p class="hero-sub">Cali is an AI friend who meditates with you over a phone call. Text her, pick up, and breathe. No app, no library, no screen.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#waitlist">💬&ensp;Join the waitlist</a>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ============ QUOTE ============ -->
 <section class="quote-band">
   <h2>"Put your phone down. <span class="serif">I've got you</span> for the next three minutes."</h2>
-  <p>The hardest part of meditating is starting: opening another app, browsing a library, picking between forty sessions, staring at a screen one swipe away from your notifications. A phone call skips all of it — you close your eyes and follow a voice. That's the whole thing.</p>
+  <p>The hardest part of meditating is starting: opening another app, browsing a library, picking between forty sessions, staring at a screen one swipe away from your notifications. A phone call skips all of it. You close your eyes and follow a voice. That's the whole thing.</p>
 </section>
 
 <!-- ============ HOW IT WORKS ============ -->
@@ -450,7 +455,7 @@
       <div class="step">
         <div class="step-num">1</div>
         <h3>Text when you're ready</h3>
-        <p>No forms, no menus. Just text like you would a friend — before bed, after work, between meetings, whenever you want a reset.</p>
+        <p>No forms, no menus. Just text like you would a friend: before bed, after work, between meetings, whenever you want a reset.</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
@@ -460,7 +465,7 @@
       <div class="step">
         <div class="step-num">3</div>
         <h3>Close your eyes and breathe</h3>
-        <p>A quick hello, then the meditation begins — breathing, unwinding, focus, or sleep, guided live and made for how you feel today, as long as you want it.</p>
+        <p>A quick hello, then the meditation begins. Breathing, unwinding, focus, or sleep, guided live for how you feel today, as long as you want it.</p>
       </div>
       <div class="step">
         <div class="step-num">4</div>
@@ -473,7 +478,7 @@
 
 <!-- ============ DURATIONS ============ -->
 <section class="durations">
-  <h2>How long do you want me for — <span class="serif">one, three, five, or ten?</span></h2>
+  <h2>How long do you want me for? <span class="serif">One, three, five, or ten.</span></h2>
   <div class="chips">
     <div class="chip">1 min<span>emergency exhale</span></div>
     <div class="chip">3 min<span>the classic reset</span></div>
@@ -498,8 +503,11 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = s => document.querySelector(s);
 
-  // Chat plays itself out
+  // Chat plays itself out. The hide-then-reveal class is added here so the
+  // conversation stays visible when JavaScript doesn't run.
   const pill = $('#callPill');
+  ['.timestamp', '#msg1', '#msg2', '#msg3', '#msg4', '.delivered', '.annotation', '#callPill']
+    .forEach(s => { const el = $(s); if (el) el.classList.add('anim'); });
   const steps = [
     { show: '.timestamp', wait: 150 },
     { show: '#msg1', wait: 450 },
