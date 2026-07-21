@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Editor brief for the 20-second Cali rough cut Finding Peace Within Chaos — beat map, Wong Kar-wai color direction, sound-drop design, and VO trim guide.">
+<title>CALI — Editor Brief · "Finding Peace Within Chaos"</title>
+<style>
+  :root{
+    --paper:#FBF8F2; --ink:#242C33; --ink-soft:#5A6670; --line:#D9D2C4;
+    --amber:#C07A2E; --amber-soft:#F3E2C8; --fog:#5D7A8C; --fog-soft:#E3EAEE;
+    --chaos:#66794A; --chaos-soft:#E6EAD9; --card:#FFFFFF;
+    --neon:#B5472F; --neon-soft:#F5DED6;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#151A20; --ink:#E8E3D8; --ink-soft:#9AA4AC; --line:#333C45;
+      --amber:#D99A4E; --amber-soft:#3A2E1C; --fog:#8FB0C2; --fog-soft:#1F2B33;
+      --chaos:#9AB07A; --chaos-soft:#28301F; --card:#1C232B;
+      --neon:#E07A5F; --neon-soft:#38221B;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#151A20; --ink:#E8E3D8; --ink-soft:#9AA4AC; --line:#333C45;
+    --amber:#D99A4E; --amber-soft:#3A2E1C; --fog:#8FB0C2; --fog-soft:#1F2B33;
+    --chaos:#9AB07A; --chaos-soft:#28301F; --card:#1C232B; --neon:#E07A5F; --neon-soft:#38221B;
+  }
+  :root[data-theme="light"]{
+    --paper:#FBF8F2; --ink:#242C33; --ink-soft:#5A6670; --line:#D9D2C4;
+    --amber:#C07A2E; --amber-soft:#F3E2C8; --fog:#5D7A8C; --fog-soft:#E3EAEE;
+    --chaos:#66794A; --chaos-soft:#E6EAD9; --card:#FFFFFF; --neon:#B5472F; --neon-soft:#F5DED6;
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:15px; line-height:1.55; margin:0; padding:32px 20px 64px}
+  .sheet{max-width:880px; margin:0 auto}
+
+  header{border-bottom:3px solid var(--ink); padding-bottom:18px; margin-bottom:24px}
+  .prod-line{font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px}
+  h1{font-family:var(--mono); font-weight:700; font-size:clamp(24px,4.2vw,34px); letter-spacing:-.01em; margin:10px 0 6px; text-wrap:balance}
+  h1 .amber{color:var(--amber)}
+  .logline{color:var(--ink-soft); max-width:64ch; margin:0}
+  .meta-strip{display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:18px; border-radius:4px; overflow:hidden}
+  .meta-strip div{background:var(--card); padding:10px 12px}
+  .meta-strip .k{font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+  .meta-strip .v{font-size:17px; font-weight:700; margin-top:2px}
+
+  h2{font-family:var(--mono); font-size:13px; letter-spacing:.16em; text-transform:uppercase; border-bottom:1px solid var(--line); padding-bottom:6px; margin:36px 0 16px; display:flex; align-items:baseline; gap:10px}
+  h2 .no{color:var(--amber)}
+  p{margin:0 0 12px}
+  .lead{max-width:66ch}
+
+  /* ---------- timeline hero ---------- */
+  .timeline{border:1px solid var(--line); border-radius:6px; overflow:hidden; background:var(--card)}
+  .tl-bar{display:flex; height:46px; font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.04em}
+  .tl-bar .seg{display:flex; align-items:center; justify-content:center; color:#fff; text-align:center; padding:0 6px}
+  .seg.s1{background:var(--chaos); flex:2}
+  .seg.s2{background:var(--neon); flex:5}
+  .seg.s3{background:#2B333A; flex:.7; font-size:9px}
+  .seg.s4{background:var(--amber); flex:3}
+  @media (prefers-color-scheme: dark){ .seg.s3{background:#0C0F12} }
+  .tl-scale{display:flex; font-family:var(--mono); font-size:10px; color:var(--ink-soft); border-top:1px solid var(--line)}
+  .tl-scale span{flex:1; text-align:center; padding:4px 0; border-right:1px solid var(--line)}
+  .tl-scale span:last-child{border-right:none}
+
+  .beats{display:grid; gap:10px; margin-top:16px}
+  .beat{display:grid; grid-template-columns:96px 1fr; border:1px solid var(--line); border-radius:4px; background:var(--card); overflow:hidden}
+  .beat .tc{padding:12px 10px; border-right:1px solid var(--line); font-family:var(--mono); font-variant-numeric:tabular-nums}
+  .beat .tc .t{font-size:14px; font-weight:700}
+  .beat .tc .len{font-size:10px; color:var(--ink-soft); margin-top:3px}
+  .beat .body{padding:12px 16px}
+  .beat h3{margin:0 0 4px; font-size:15.5px}
+  .beat p{margin:0; font-size:13.5px; color:var(--ink-soft)}
+  .dot{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:7px; vertical-align:middle}
+  .dot.c1{background:var(--chaos)} .dot.c2{background:var(--neon)} .dot.c3{background:#2B333A} .dot.c4{background:var(--amber)}
+  .beat.drop{border-color:var(--neon); border-width:2px}
+  .beat.drop .body{background:var(--neon-soft)}
+
+  .cols{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media (max-width:640px){ .cols{grid-template-columns:1fr} .beat{grid-template-columns:1fr} .beat .tc{border-right:none; border-bottom:1px solid var(--line); display:flex; gap:10px; align-items:baseline} }
+  .card{border:1px solid var(--line); border-radius:4px; background:var(--card); padding:16px 18px}
+  .card h4{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 10px}
+  .card ul{margin:0; padding-left:18px} .card li{margin:5px 0; font-size:14px}
+  .card p{font-size:14px}
+
+  .swatches{display:flex; gap:0; border-radius:4px; overflow:hidden; border:1px solid var(--line); margin:4px 0 12px}
+  .swatches div{flex:1; height:40px}
+  .phase{border-left:4px solid var(--line); padding:2px 0 2px 14px; margin:14px 0}
+  .phase.chaos{border-color:var(--chaos)}
+  .phase.calm{border-color:var(--amber)}
+  .phase .lbl{font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; font-weight:700}
+  .phase.chaos .lbl{color:var(--chaos)} .phase.calm .lbl{color:var(--amber)}
+
+  .vo{border:1px solid var(--line); border-radius:6px; background:var(--card); overflow:hidden}
+  .vo .vo-head{background:var(--ink); color:var(--paper); font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; padding:8px 16px}
+  .vo .lines{padding:14px 18px}
+  .vo .ln{display:grid; grid-template-columns:22px 1fr auto; gap:10px; align-items:baseline; padding:7px 0; border-bottom:1px dashed var(--line)}
+  .vo .ln:last-child{border-bottom:none}
+  .vo .ln .n{font-family:var(--mono); font-size:11px; color:var(--ink-soft)}
+  .vo .ln .txt{font-size:14.5px}
+  .vo .ln .keep{font-family:var(--mono); font-size:9.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:2px 7px; border-radius:3px; white-space:nowrap}
+  .keep.core{background:var(--amber-soft); color:var(--amber)}
+  .keep.cut{background:var(--fog-soft); color:var(--fog)}
+  .vo .ln.drop-ln .txt{color:var(--neon); font-weight:600}
+  .vo .ln.ocean .txt{color:var(--amber); font-style:italic}
+
+  .callout{background:var(--fog-soft); border-radius:6px; padding:12px 16px; font-size:13.5px; margin:14px 0}
+  .callout b{color:var(--fog)}
+  .ref-tag{display:inline-block; font-family:var(--mono); font-size:11px; background:var(--neon-soft); color:var(--neon); padding:3px 9px; border-radius:3px; margin:0 4px 4px 0}
+
+  footer{margin-top:40px; padding-top:14px; border-top:3px solid var(--ink); font-family:var(--mono); font-size:11px; color:var(--ink-soft); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px}
+
+  @media print{ body{padding:0; font-size:12px; background:#fff; color:#1a1a1a} .beat,.card,.vo,.timeline{break-inside:avoid} }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+<header>
+  <div class="prod-line">
+    <span>CALI — a call away from calm</span>
+    <span>Editor brief · Rough cut v1</span>
+  </div>
+  <h1>"Finding Peace Within Chaos" — <span class="amber">Rough Draft Direction</span></h1>
+  <p class="logline">B-roll only, no on-camera dialogue. A girl moving through an overstimulating city, crashing out — then a hard sound drop into stillness as she meditates by the ocean. This pass is about locking <b>structure, color, and sound</b>. Motion graphics on the ending come later (your call).</p>
+  <div class="meta-strip">
+    <div><span class="k">Target length</span><div class="v">20 sec</div></div>
+    <div><span class="k">Format</span><div class="v">9:16 vertical</div></div>
+    <div><span class="k">Audio</span><div class="v">~60s → trim</div></div>
+    <div><span class="k">Deliver</span><div class="v">Rough draft</div></div>
+  </div>
+</header>
+
+<h2><span class="no">01</span> The one thing this cut has to do</h2>
+<p class="lead">Overwhelm, then relief — and the relief has to be <i>felt</i>, not just seen. Front-load the chaos so densely that the viewer is a little stressed too, then rip the sound out from under them at the ocean. The silence is the payoff. If someone watches on mute, the cut still has to read as "noise → peace" through the picture and the color alone.</p>
+
+<h2><span class="no">02</span> Structure &amp; length — 20s beat map</h2>
+<div class="timeline">
+  <div class="tl-bar">
+    <div class="seg s1">COLD OPEN</div>
+    <div class="seg s2">CHAOS BUILD</div>
+    <div class="seg s3">DROP</div>
+    <div class="seg s4">OCEAN / PEACE</div>
+  </div>
+  <div class="tl-scale"><span>0s</span><span>4s</span><span>8s</span><span>12s</span><span>16s</span><span>20s</span></div>
+</div>
+
+<div class="beats">
+  <div class="beat">
+    <div class="tc"><div class="t">0:00–0:02</div><div class="len">~2 sec</div></div>
+    <div class="body"><h3><span class="dot c1"></span>Cold open — one detail</h3><p>Open on a single overstimulating close-up (notifications stacking, a hand, flashing signal). Establish "too much" in the first frame — no slow warmup.</p></div>
+  </div>
+  <div class="beat">
+    <div class="tc"><div class="t">0:02–0:13</div><div class="len">~11 sec</div></div>
+    <div class="body"><h3><span class="dot c2"></span>Chaos build — accelerating montage</h3><p>All the chaotic city B-roll, cuts getting faster toward the end. Intercut the crash-out clips (her overwhelmed, eyes shut, hand to head) as recurring punctuation — roughly every 2–3 shots. Let the in-camera smear do the work; don't stabilize it.</p></div>
+  </div>
+  <div class="beat drop">
+    <div class="tc"><div class="t">0:13–0:14</div><div class="len">~1 sec</div></div>
+    <div class="body"><h3><span class="dot c3"></span>THE DROP</h3><p><b>The hinge of the whole video.</b> Cut on the most chaotic frame → hard sound drop to near-silence. Optional half-beat of black or a 2–3 frame flash before the ocean. Everything before this is loud and moving; everything after is quiet and still.</p></div>
+  </div>
+  <div class="beat">
+    <div class="tc"><div class="t">0:14–0:20</div><div class="len">~6 sec</div></div>
+    <div class="body"><h3><span class="dot c4"></span>Ocean / peace</h3><p>She's sitting by the water, meditating, phone in hand. Long, held, barely-moving shots (opposite of everything before). Ambient ocean + faint meditation audio from the phone come up as the only sound. Leave headroom in the frame for the end-card motion graphics.</p></div>
+  </div>
+</div>
+
+<h2><span class="no">03</span> Color / vibe — Wong Kar-wai "Fallen Angels" (1995)</h2>
+<p class="lead">All three reference links are <b>Fallen Angels (1995)</b> aesthetic edits — that's the north star.</p>
+<p><span class="ref-tag">#fallenangels1995</span><span class="ref-tag">#wongkarwai</span><span class="ref-tag">shoegaze / dream-pop scoring</span><span class="ref-tag">step-printed motion smear</span></p>
+<p class="lead">The look: saturated neon bleeding into crushed blacks, wide-angle intimacy, and heavy smeared motion. Good news — the footage was shot at a 1/15 shutter, so the Wong Kar-wai smear is already <i>baked in</i>. Lean into it; don't fight it. Grade the video in two distinct temperatures so the color itself tells the story:</p>
+
+<div class="phase chaos">
+  <div class="lbl">Chaos section — cold &amp; toxic</div>
+  <p style="margin:6px 0 0; font-size:14px">Push contrast hard, crush the blacks. Cool it down with a sickly green/teal cast in the shadows (fluorescent, Muni-station energy) and let neon signage blow out into red/magenta. It should feel airless and a little nauseous.</p>
+</div>
+<div class="swatches" aria-hidden="true">
+  <div style="background:#1c2a20"></div><div style="background:#3a5240"></div><div style="background:#6a2222"></div><div style="background:#b5472f"></div><div style="background:#c9b24a"></div>
+</div>
+
+<div class="phase calm">
+  <div class="lbl">Ocean section — warm &amp; alive</div>
+  <p style="margin:6px 0 0; font-size:14px">Flip to warm the instant the sound drops. Amber / golden-hour glow, softer contrast, blacks lifted slightly so it breathes. Fallen Angels' warm-lamp interiors are the reference — but here it's the sun on water. The warmth arriving is the emotional turn; make it obvious.</p>
+</div>
+<div class="swatches" aria-hidden="true">
+  <div style="background:#3a2a17"></div><div style="background:#8a5a2a"></div><div style="background:#c07a2e"></div><div style="background:#e6b877"></div><div style="background:#f3e2c8"></div>
+</div>
+<div class="callout"><b>Tip:</b> a subtle film grain + tiny gate-weave/chromatic fringe on the chaos section sells the 90s WKW texture. Keep the ocean section cleaner and steadier — less grain, no shake — so the format itself calms down too.</div>
+
+<h2><span class="no">04</span> Sound design</h2>
+<div class="cols">
+  <div class="card">
+    <h4>The build</h4>
+    <ul>
+      <li>Layer the city noise thick — voices, traffic, notifications, phone buzz — panned busy and slightly uncomfortable.</li>
+      <li>Rising intensity / low rumble under the last ~3 sec of chaos to signal the drop is coming.</li>
+      <li>The VO (below) rides over the chaos, close-mic'd and dry.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>The drop &amp; after</h4>
+    <ul>
+      <li>At 0:13–0:14: <b>hard cut to near-silence.</b> Kill everything for a beat — even a touch of room tone / ringing tone works.</li>
+      <li>Then fade up: ocean waves + faint meditation audio from her phone. That becomes the last sound of the film.</li>
+      <li>Her VO hands off to the calm — don't let city noise creep back.</li>
+    </ul>
+  </div>
+</div>
+<div class="callout"><b>On the ~1-minute audio:</b> it's fine to cut it down — trim to the lines marked <b style="color:var(--amber)">CORE</b> below and drop the rest so it lands in ~20s. Keep natural breaths between lines; don't tighten them out. Make it make sense, don't preserve every word.</div>
+
+<div class="vo">
+  <div class="vo-head">Voiceover — trim guide (numb, flat, tired — no drama until the last word)</div>
+  <div class="lines">
+    <div class="ln"><span class="n">1</span><span class="txt">"My head hasn't been quiet in… I don't even know how long."</span><span class="keep core">core</span></div>
+    <div class="ln"><span class="n">2</span><span class="txt">"Even my thoughts have thoughts."</span><span class="keep cut">optional</span></div>
+    <div class="ln"><span class="n">3</span><span class="txt">"It's not that I'm tired. It's that I don't remember what rested feels like."</span><span class="keep core">core</span></div>
+    <div class="ln"><span class="n">4</span><span class="txt">"I keep moving because… honestly, I'm scared of what happens if I stop."</span><span class="keep cut">optional</span></div>
+    <div class="ln"><span class="n">5</span><span class="txt">"Scared there's no me under it."</span><span class="keep core">core</span></div>
+    <div class="ln drop-ln"><span class="n">6</span><span class="txt">"But some days… I just want to shut it all off."  ← last line before THE DROP</span><span class="keep core">core</span></div>
+    <div class="ln ocean"><span class="n">7</span><span class="txt">"…So today, I did."  (over the ocean — or cut it and let the waves answer)</span><span class="keep core">core</span></div>
+  </div>
+</div>
+
+<h2><span class="no">05</span> Editing rhythm &amp; ending notes</h2>
+<div class="cols">
+  <div class="card">
+    <h4>Cutting</h4>
+    <ul>
+      <li>Chaos: cut on motion, on beat, accelerating. Whip-y, restless, jump-cuts welcome.</li>
+      <li>Recurring crash-out inserts as the emotional through-line — same girl, breaking down, 3–4 times.</li>
+      <li>Ocean: 1–2 shots only, long and static. The contrast in <i>cutting pace</i> matters as much as color.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>Ending / motion graphics</h4>
+    <ul>
+      <li>Leave clean negative space (sky / water) for a text end-card.</li>
+      <li>Placeholder line to build around: <b>~~the noise~~ the world can wait. Cali.</b></li>
+      <li>Your MoGraph person can take it from the rough cut — just protect the framing headroom now.</li>
+    </ul>
+  </div>
+</div>
+
+<h2><span class="no">06</span> What to send back</h2>
+<p class="lead">A rough draft — structure, color pass, and sound roughed in. Don't polish. I mainly want to feel: <b>the density of the chaos, whether the drop hits, and whether the color turn at the ocean lands.</b> Vertical 9:16, ~20 seconds. Watermark/proxy fine.</p>
+
+<footer>
+  <span>CALI · "Finding Peace Within Chaos" · Editor brief · rough cut v1</span>
+  <span>ref: Fallen Angels 1995 · print me</span>
+</footer>
+</div>
+
+</body>
+</html>
