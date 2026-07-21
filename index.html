@@ -361,9 +361,12 @@
 
   /* ---------- Responsive ---------- */
   @media (max-width: 880px) {
+    .sky {
+      background-position: 0 0, 47% center, 0 0;
+    }
     .sky::after {
       content: ''; position: absolute; inset: 0; z-index: 1;
-      background: rgba(16, 38, 84, 0.22); pointer-events: none;
+      background: rgba(16, 38, 84, 0.10); pointer-events: none;
     }
     nav { padding: 16px 22px; }
     .hero { grid-template-columns: 1fr; padding-top: 6px; padding-bottom: 90px; text-align: center; }
