@@ -359,6 +359,59 @@
   .wave span:nth-child(5) { height: 9px; animation-delay: -0.35s; }
   @keyframes wv { from { transform: scaleY(0.4); } to { transform: scaleY(1); } }
 
+  /* ---------- Waitlist modal ---------- */
+  .wl-overlay {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(16, 24, 44, 0.55);
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    display: none; align-items: center; justify-content: center;
+    padding: 20px; opacity: 0; transition: opacity 0.25s ease;
+  }
+  .wl-overlay.open { display: flex; opacity: 1; }
+  .wl-card {
+    width: min(400px, 100%); max-height: 92vh; overflow-y: auto;
+    background: #fff; border-radius: 30px;
+    box-shadow: 0 40px 100px rgba(16, 24, 44, 0.5);
+    padding: 20px 20px 24px;
+    transform: translateY(18px) scale(0.97);
+    transition: transform 0.28s cubic-bezier(.2,.8,.2,1);
+  }
+  .wl-overlay.open .wl-card { transform: none; }
+  .wl-header { text-align: center; position: relative; padding-bottom: 12px; margin-bottom: 16px; border-bottom: 1px solid rgba(28,43,69,0.08); }
+  .wl-avatar { width: 46px; height: 46px; border-radius: 50%; margin: 0 auto 6px; background: linear-gradient(135deg,#cfe0f7,#7fa8e8); display: grid; place-items: center; }
+  .wl-avatar img { width: 30px; height: auto; display: block; }
+  .wl-name { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .wl-name span { color: rgba(28,43,69,0.4); font-weight: 400; }
+  .wl-close { position: absolute; top: -2px; right: -2px; width: 30px; height: 30px; border: none; background: rgba(28,43,69,0.06); border-radius: 50%; font-size: 15px; color: rgba(28,43,69,0.55); cursor: pointer; line-height: 1; transition: background 0.15s; }
+  .wl-close:hover { background: rgba(28,43,69,0.13); }
+  .wl-intro { background: var(--gray-bubble); color: #000; max-width: 92%; padding: 10px 14px; border-radius: 18px; font-size: 14.5px; line-height: 1.38; margin-bottom: 18px; }
+  .wl-field { margin-bottom: 12px; }
+  .wl-field label { display: block; font-size: 12px; font-weight: 600; color: rgba(28,43,69,0.55); margin: 0 0 5px 4px; }
+  .wl-field input, .wl-field textarea {
+    width: 100%; font: inherit; font-size: 15.5px; color: var(--ink);
+    background: #f1f2f4; border: 1.5px solid transparent; border-radius: 14px;
+    padding: 12px 14px; outline: none; transition: border-color 0.15s, background 0.15s;
+  }
+  .wl-field textarea { resize: none; min-height: 54px; }
+  .wl-field input:focus, .wl-field textarea:focus { border-color: var(--blue-bubble); background: #fff; }
+  .wl-field input::placeholder, .wl-field textarea::placeholder { color: rgba(60,60,67,0.4); }
+  .wl-field.error input, .wl-field.error textarea { border-color: #ff453a; background: #fff5f5; }
+  .wl-submit {
+    width: 100%; margin-top: 6px; background: var(--blue-bubble); color: #fff;
+    font-weight: 700; font-size: 16px; border: none; padding: 14px; border-radius: 100px; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    transition: transform 0.15s, opacity 0.15s;
+  }
+  .wl-submit:hover { transform: translateY(-1px); }
+  .wl-submit:disabled { opacity: 0.6; cursor: default; transform: none; }
+  .wl-fineprint { text-align: center; font-size: 11.5px; color: rgba(28,43,69,0.42); margin-top: 12px; line-height: 1.4; }
+  .wl-thanks { display: none; text-align: center; padding: 14px 6px 8px; }
+  .wl-card.done .wl-form { display: none; }
+  .wl-card.done .wl-thanks { display: block; }
+  .wl-check { width: 62px; height: 62px; border-radius: 50%; margin: 6px auto 18px; background: linear-gradient(135deg,#8fb2ea,#6396e0); display: grid; place-items: center; color: #fff; font-size: 30px; box-shadow: 0 10px 26px rgba(99,150,224,0.4); }
+  .wl-thanks h3 { font-size: 22px; letter-spacing: -0.02em; margin-bottom: 8px; color: var(--ink); }
+  .wl-thanks p { font-size: 15px; color: var(--ink-soft); line-height: 1.5; max-width: 30ch; margin: 0 auto; }
+
   /* ---------- Responsive ---------- */
   @media (max-width: 880px) {
     .sky {
@@ -391,7 +444,7 @@
 <section class="sky">
   <nav>
     <div class="brand"><img class="logo-svg" src="assets/logo-small.png" alt="" width="46">Cali</div>
-    <a class="nav-cta" href="#waitlist">Join the waitlist</a>
+    <a class="nav-cta" href="#waitlist" data-waitlist>Join the waitlist</a>
   </nav>
 
   <div class="hero">
@@ -443,7 +496,7 @@
     <div class="hero-copy">
       <p class="hero-sub">Cali is an AI friend who meditates with you over a phone call. Text her, pick up, and breathe. No app, no library, no screen.</p>
       <div class="hero-actions">
-        <a class="btn-primary" href="#waitlist">💬&ensp;Join the waitlist</a>
+        <a class="btn-primary" href="#waitlist" data-waitlist>💬&ensp;Join the waitlist</a>
       </div>
     </div>
   </div>
@@ -498,8 +551,49 @@
 <!-- ============ CLOSING ============ -->
 <section class="closing" id="waitlist">
   <h2>Your next meditation is <span class="serif">one text away.</span></h2>
-  <a class="btn-primary" href="mailto:elsa@ditto.ai?subject=Cali%20waitlist">💬&ensp;Join the waitlist</a>
+  <a class="btn-primary" href="#waitlist" data-waitlist>💬&ensp;Join the waitlist</a>
 </section>
+
+<!-- ============ WAITLIST MODAL ============ -->
+<div class="wl-overlay" id="wlOverlay" role="dialog" aria-modal="true" aria-label="Join the Cali waitlist">
+  <div class="wl-card" id="wlCard">
+    <div class="wl-header">
+      <button class="wl-close" id="wlClose" aria-label="Close">✕</button>
+      <div class="wl-avatar"><img src="assets/logo-small.png" alt=""></div>
+      <div class="wl-name">Cali <span>›</span></div>
+    </div>
+
+    <form class="wl-form" id="wlForm" novalidate>
+      <div class="wl-intro">hey 🌤️ leave your info and i'll text you the moment it's your turn to breathe.</div>
+
+      <div class="wl-field" id="f-name">
+        <label for="wl-name">First name</label>
+        <input id="wl-name" name="name" type="text" autocomplete="given-name" placeholder="your name">
+      </div>
+      <div class="wl-field" id="f-phone">
+        <label for="wl-phone">Phone number</label>
+        <input id="wl-phone" name="phone" type="tel" autocomplete="tel" placeholder="(555) 123-4567">
+      </div>
+      <div class="wl-field" id="f-email">
+        <label for="wl-email">Email</label>
+        <input id="wl-email" name="email" type="email" autocomplete="email" placeholder="you@email.com">
+      </div>
+      <div class="wl-field" id="f-q">
+        <label for="wl-q">What makes you overthink? <span style="font-weight:400;color:rgba(28,43,69,0.35)">(optional)</span></label>
+        <textarea id="wl-q" name="overthink" placeholder="the group chat. 3am. everything, tbh."></textarea>
+      </div>
+
+      <button class="wl-submit" type="submit" id="wlSubmit">💬&ensp;Join the waitlist</button>
+      <p class="wl-fineprint">No spam. Just one text when Cali's ready for you.</p>
+    </form>
+
+    <div class="wl-thanks">
+      <div class="wl-check">✓</div>
+      <h3>You're on the list 🤍</h3>
+      <p>I'll text you the moment it's your turn. Keep your phone close.</p>
+    </div>
+  </div>
+</div>
 
 <footer>
   <p class="disclaimer">Cali is a wellness and meditation companion, <strong>not a therapist or medical provider</strong>. It doesn't diagnose, treat, or replace professional care. If you're in crisis or thinking about harming yourself, call or text <strong>988</strong> (Suicide &amp; Crisis Lifeline) or dial <strong>911</strong>.</p>
@@ -556,6 +650,66 @@
   $('#btnDecline').addEventListener('click', () => {
     pill.classList.remove('show');
     setTimeout(() => pill.classList.add('show'), 1600); // Cali tries again
+  });
+
+  // ---------- Waitlist modal ----------
+  // Paste the form endpoint here to send signups to your backend.
+  const WAITLIST_ENDPOINT = '';
+
+  const overlay = $('#wlOverlay'), card = $('#wlCard'), form = $('#wlForm');
+  const openModal = () => {
+    card.classList.remove('done');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => $('#wl-name').focus(), 300);
+  };
+  const closeModal = () => {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+  document.querySelectorAll('[data-waitlist]').forEach(b =>
+    b.addEventListener('click', e => { e.preventDefault(); openModal(); }));
+  $('#wlClose').addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal(); });
+
+  const setErr = (id, on) => $('#' + id).classList.toggle('error', on);
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const name = $('#wl-name').value.trim();
+    const phone = $('#wl-phone').value.trim();
+    const email = $('#wl-email').value.trim();
+    const overthink = $('#wl-q').value.trim();
+
+    let ok = true;
+    setErr('f-name', !name); if (!name) ok = false;
+    const digits = phone.replace(/\D/g, '');
+    setErr('f-phone', digits.length < 7); if (digits.length < 7) ok = false;
+    const emailOk = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
+    setErr('f-email', !emailOk); if (!emailOk) ok = false;
+    if (!ok) return;
+
+    const btn = $('#wlSubmit');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    const payload = { name, phone, email, overthink, source: 'try-cali.com' };
+    try {
+      if (WAITLIST_ENDPOINT) {
+        await fetch(WAITLIST_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+      } else {
+        // No endpoint wired yet — keep signups locally so none are lost during setup.
+        const saved = JSON.parse(localStorage.getItem('cali_waitlist') || '[]');
+        saved.push({ ...payload, at: new Date().toISOString() });
+        localStorage.setItem('cali_waitlist', JSON.stringify(saved));
+      }
+      card.classList.add('done');
+    } catch (err) {
+      btn.disabled = false; btn.textContent = '💬 Join the waitlist';
+      alert("Hmm, that didn't go through — mind trying again?");
+    }
   });
 
 })();
