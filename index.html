@@ -298,6 +298,76 @@
   }
   .chip span { display: block; font-size: 12.5px; font-weight: 500; color: var(--ink-soft); margin-top: 2px; }
 
+  /* ---------- Cali for Work ---------- */
+  .work {
+    background: #dce9f8;
+    padding: clamp(84px, 11vh, 128px) 24px;
+  }
+  .work-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(42px, 7vw, 86px);
+    align-items: center;
+  }
+  .work .kicker { text-align: left; color: #5f7eaa; margin-bottom: 22px; }
+  .work h2 {
+    font-size: clamp(34px, 4.6vw, 54px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    max-width: 13ch;
+  }
+  .work h2 .serif { font-weight: 400; }
+  .work-intro {
+    color: var(--ink-soft);
+    font-size: 18px;
+    line-height: 1.65;
+    max-width: 47ch;
+    margin-top: 22px;
+  }
+  .work-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 30px;
+    padding: 14px 24px;
+    border-radius: 100px;
+    background: var(--ink);
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    box-shadow: 0 12px 28px rgba(28, 43, 69, 0.2);
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+  .work-cta:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgba(28, 43, 69, 0.26); }
+  .work-note { margin-top: 12px; color: rgba(28, 43, 69, 0.54); font-size: 13px; }
+  .work-features { display: grid; gap: 14px; }
+  .work-feature {
+    display: grid;
+    grid-template-columns: 46px 1fr;
+    gap: 16px;
+    align-items: start;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.92);
+    border-radius: 22px;
+    padding: 22px;
+    box-shadow: 0 12px 34px rgba(67, 96, 136, 0.08);
+  }
+  .work-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+    background: #fff;
+    font-size: 20px;
+    box-shadow: 0 7px 20px rgba(67, 96, 136, 0.12);
+  }
+  .work-feature h3 { font-size: 18px; letter-spacing: -0.02em; margin: 2px 0 6px; }
+  .work-feature p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.55; }
+
   footer {
     background: #182338;
     color: rgba(255,255,255,0.75);
@@ -421,10 +491,15 @@
     .hero-copy { margin-top: 70px; }
     .stage { margin-top: 20px; }
     .steps { grid-template-columns: 1fr 1fr; }
+    .work-inner { grid-template-columns: 1fr; }
+    .work h2 { max-width: 15ch; }
     .call-pill { right: 4px; }
   }
   @media (max-width: 520px) {
     .steps { grid-template-columns: 1fr; }
+    .work { padding-left: 20px; padding-right: 20px; }
+    .work-feature { grid-template-columns: 40px 1fr; padding: 19px 17px; }
+    .work-icon { width: 40px; height: 40px; border-radius: 13px; font-size: 18px; }
     .call-pill { right: 0; bottom: -46px; }
     .annotation { display: none; }
   }
@@ -537,6 +612,43 @@
     <div class="chip">3 min<span>the classic reset</span></div>
     <div class="chip">5 min<span>full unwind</span></div>
     <div class="chip">10 min<span>deep decompress</span></div>
+  </div>
+</section>
+
+<!-- ============ CALI FOR WORK ============ -->
+<section class="work" id="work">
+  <div class="work-inner">
+    <div class="work-copy">
+      <div class="kicker">Cali for work</div>
+      <h2>A personal reset for <span class="serif">every kind of workday.</span></h2>
+      <p class="work-intro">Give your team a meditation line they can call between meetings, after a hard shift, or before heading home. No app to download, no camera to turn on, and no library to search.</p>
+      <a class="work-cta" href="tel:+16893993448" aria-label="Call Cali at 689 399 3448 and experience a workplace reset">📞&ensp;Experience Cali in 3 minutes</a>
+      <p class="work-note">Made for offices, hybrid teams, and frontline workers.</p>
+    </div>
+
+    <div class="work-features">
+      <div class="work-feature">
+        <div class="work-icon" aria-hidden="true">☁️</div>
+        <div>
+          <h3>Call whenever work gets loud</h3>
+          <p>Employees get an on-demand guided reset shaped around how they feel and how much time they have.</p>
+        </div>
+      </div>
+      <div class="work-feature">
+        <div class="work-icon" aria-hidden="true">🫶</div>
+        <div>
+          <h3>Reset together, live</h3>
+          <p>Schedule short guided pauses before an all-hands, after a demanding shift, or in the middle of a wellness day.</p>
+        </div>
+      </div>
+      <div class="work-feature">
+        <div class="work-icon" aria-hidden="true">📵</div>
+        <div>
+          <h3>One less workplace app</h3>
+          <p>A familiar phone call makes Cali simple to reach from a desk, a store floor, a hospital, or home.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
