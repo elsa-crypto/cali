@@ -344,6 +344,56 @@
   .work-cta:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgba(28, 43, 69, 0.26); }
   .work-note { margin-top: 12px; color: rgba(28, 43, 69, 0.54); font-size: 13px; }
   .work-features { display: grid; gap: 14px; }
+  .work-banter {
+    background: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.92);
+    border-radius: 24px;
+    padding: 22px;
+    box-shadow: 0 16px 38px rgba(67, 96, 136, 0.12);
+  }
+  .work-banter-label {
+    color: #6a87b0;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 0 16px 2px;
+  }
+  .work-speech {
+    width: fit-content;
+    max-width: 90%;
+    padding: 11px 15px;
+    border-radius: 18px;
+    font-size: 14.5px;
+    line-height: 1.45;
+  }
+  .work-speech.employee {
+    margin-left: auto;
+    background: var(--blue-bubble);
+    color: #fff;
+    border-bottom-right-radius: 5px;
+  }
+  .work-speech.cali {
+    margin-top: 9px;
+    background: var(--gray-bubble);
+    color: #000;
+    border-bottom-left-radius: 5px;
+  }
+  .work-banter-next {
+    margin-top: 17px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #5f7eaa;
+    font: inherit;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: rgba(95, 126, 170, 0.35);
+    text-underline-offset: 4px;
+  }
+  .work-banter-next:hover { color: var(--ink); }
   .work-feature {
     display: grid;
     grid-template-columns: 46px 1fr;
@@ -624,32 +674,38 @@
   <div class="work-inner">
     <div class="work-copy">
       <div class="kicker">Cali for work</div>
-      <h2>Talk through the stress. <span class="serif">Then let it go.</span></h2>
-      <p class="work-intro">Employees call Cali and say what's weighing on them: an overwhelming meeting, a difficult shift, or the thoughts they can't switch off. Cali listens, responds, and turns that conversation into a guided meditation for the moment. It feels personal and human, without pretending to be therapy.</p>
-      <a class="work-cta" href="tel:+16893993448" aria-label="Call Cali at 689 399 3448 and experience a workplace reset">Experience Cali in 3 minutes</a>
-      <p class="work-note">Made for offices, hybrid teams, and frontline workers.</p>
+      <h2>Work is weird. <span class="serif">Tell Cali everything.</span></h2>
+      <p class="work-intro">Bad meeting? Slack message with a period? Someone dropped “quick chat” and vanished? Call Cali. Rant at full speed or take it painfully slow. Cali matches your pace, talks back like a real friend, then eases you into a meditation before you send the message you'll have to explain tomorrow.</p>
+      <a class="work-cta" href="tel:+16893993448" aria-label="Call Cali at 689 399 3448 before sending that work message">Call before you send that message</a>
+      <p class="work-note">Not HR. Not therapy. Just a very good reset.</p>
     </div>
 
     <div class="work-features">
+      <div class="work-banter">
+        <p class="work-banter-label">A completely normal work emergency</p>
+        <p class="work-speech employee" id="workPrompt">my manager said “quick chat” and then disappeared for forty minutes</p>
+        <p class="work-speech cali" id="workReply">Workplace psychological suspense. We're not giving a calendar notification your whole nervous system. Slow breath in.</p>
+        <button class="work-banter-next" id="workBanterNext" type="button">give me another work emergency</button>
+      </div>
       <div class="work-feature">
         <div class="work-icon" aria-hidden="true">01</div>
         <div>
-          <h3>Talk before the meditation begins</h3>
-          <p>Employees can put everyday stress into words and feel heard before being guided into a calmer state.</p>
+          <h3>Say the unfiltered version</h3>
+          <p>No “capacity constraints.” Tell Cali the meeting was cursed. She can handle the actual sentence.</p>
         </div>
       </div>
       <div class="work-feature">
         <div class="work-icon" aria-hidden="true">02</div>
         <div>
-          <h3>A reset shaped in real time</h3>
-          <p>Cali creates a one-, three-, five-, or ten-minute session around what the employee just shared.</p>
+          <h3>Set the pace</h3>
+          <p>Rapid-fire rant first? Fine. Need ten quiet seconds between words? Also fine. Cali speeds up or slows all the way down with you.</p>
         </div>
       </div>
       <div class="work-feature">
         <div class="work-icon" aria-hidden="true">03</div>
         <div>
-          <h3>Available wherever work happens</h3>
-          <p>No app, camera, or content library. Just a familiar phone call from a desk, a store floor, a hospital, or home.</p>
+          <h3>Leave slightly less feral</h3>
+          <p>Then Cali turns the chaos into a one-, three-, five-, or ten-minute guided reset. No app. No camera. No wellness-content maze.</p>
         </div>
       </div>
     </div>
@@ -767,6 +823,36 @@
   $('#btnDecline').addEventListener('click', () => {
     pill.classList.remove('show');
     setTimeout(() => pill.classList.add('show'), 1600); // Cali tries again
+  });
+
+  // A little workday chaos, selected fresh on each visit.
+  const workBanter = [
+    {
+      prompt: 'my manager said “quick chat” and then disappeared for forty minutes',
+      reply: "Workplace psychological suspense. We're not giving a calendar notification your whole nervous system. Slow breath in.",
+    },
+    {
+      prompt: 'i replied “you too” when they said congrats',
+      reply: 'Career-ending? No. Spiritually awkward? A little. You may remain employed. Breathe.',
+    },
+    {
+      prompt: 'that meeting should have been a thought',
+      reply: "Correct. Let's reclaim three minutes from the corporation. Shoulders down.",
+    },
+    {
+      prompt: 'someone put a period in the Slack message',
+      reply: "Devastating punctuation. Probably fine. Let's get your brain out of detective mode.",
+    },
+  ];
+  let workBanterIndex = Math.floor(Math.random() * workBanter.length);
+  const showWorkBanter = () => {
+    $('#workPrompt').textContent = workBanter[workBanterIndex].prompt;
+    $('#workReply').textContent = workBanter[workBanterIndex].reply;
+  };
+  showWorkBanter();
+  $('#workBanterNext').addEventListener('click', () => {
+    workBanterIndex = (workBanterIndex + 1) % workBanter.length;
+    showWorkBanter();
   });
 
   // ---------- Waitlist modal ----------
