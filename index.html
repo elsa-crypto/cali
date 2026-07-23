@@ -298,26 +298,79 @@
   }
   .chip span { display: block; font-size: 12.5px; font-weight: 500; color: var(--ink-soft); margin-top: 2px; }
 
-  /* ---------- Closing sky ---------- */
-  .closing {
-    position: relative;
-    /* Elsa's own smoothie photo, gradient fallback */
-    background:
-      linear-gradient(180deg, rgba(25, 20, 35, 0.55) 0%, rgba(25, 20, 35, 0.42) 45%, rgba(25, 20, 35, 0.60) 100%),
-      url('assets/closing-smoothies.jpg') center 38% / cover no-repeat,
-      linear-gradient(180deg, #d8b8a8 0%, #9a7a6a 100%);
-    padding: clamp(110px, 16vh, 180px) 24px clamp(100px, 14vh, 160px);
-    text-align: center; overflow: hidden;
+  /* ---------- Cali for Work ---------- */
+  .work {
+    background: #dce9f8;
+    padding: clamp(84px, 11vh, 128px) 24px;
   }
-  .closing h2 {
-    position: relative; z-index: 2;
-    color: #fff; font-size: clamp(30px, 4.6vw, 52px);
-    letter-spacing: -0.03em; line-height: 1.12; font-weight: 800;
-    max-width: 20ch; margin: 0 auto;
-    text-shadow: 0 2px 22px rgba(0, 0, 0, 0.6), 0 1px 4px rgba(0, 0, 0, 0.45);
+  .work-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(42px, 7vw, 86px);
+    align-items: center;
   }
-  .closing h2 .serif { font-weight: 400; }
-  .closing .btn-primary { margin-top: 38px; position: relative; z-index: 2; }
+  .work .kicker { text-align: left; color: #5f7eaa; margin-bottom: 22px; }
+  .work h2 {
+    font-size: clamp(34px, 4.6vw, 54px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    max-width: 13ch;
+  }
+  .work h2 .serif { font-weight: 400; }
+  .work-intro {
+    color: var(--ink-soft);
+    font-size: 18px;
+    line-height: 1.65;
+    max-width: 47ch;
+    margin-top: 22px;
+  }
+  .work-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 30px;
+    padding: 14px 24px;
+    border-radius: 100px;
+    background: var(--ink);
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    box-shadow: 0 12px 28px rgba(28, 43, 69, 0.2);
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+  .work-cta:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgba(28, 43, 69, 0.26); }
+  .work-note { margin-top: 12px; color: rgba(28, 43, 69, 0.54); font-size: 13px; }
+  .work-features { display: grid; gap: 14px; }
+  .work-feature {
+    display: grid;
+    grid-template-columns: 46px 1fr;
+    gap: 16px;
+    align-items: start;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.92);
+    border-radius: 22px;
+    padding: 22px;
+    box-shadow: 0 12px 34px rgba(67, 96, 136, 0.08);
+  }
+  .work-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+    background: #fff;
+    color: #6a87b0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 700;
+    box-shadow: 0 7px 20px rgba(67, 96, 136, 0.12);
+  }
+  .work-feature h3 { font-size: 18px; letter-spacing: -0.02em; margin: 2px 0 6px; }
+  .work-feature p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.55; }
 
   footer {
     background: #182338;
@@ -433,9 +486,6 @@
     .sky {
       background-position: 0 0, 47% center, 0 0;
     }
-    .closing {
-      background-position: 0 0, center center, 0 0;
-    }
     .sky::after {
       content: ''; position: absolute; inset: 0; z-index: 1;
       background: rgba(16, 38, 84, 0.10); pointer-events: none;
@@ -445,10 +495,15 @@
     .hero-copy { margin-top: 70px; }
     .stage { margin-top: 20px; }
     .steps { grid-template-columns: 1fr 1fr; }
+    .work-inner { grid-template-columns: 1fr; }
+    .work h2 { max-width: 15ch; }
     .call-pill { right: 4px; }
   }
   @media (max-width: 520px) {
     .steps { grid-template-columns: 1fr; }
+    .work { padding-left: 20px; padding-right: 20px; }
+    .work-feature { grid-template-columns: 40px 1fr; padding: 19px 17px; }
+    .work-icon { width: 40px; height: 40px; border-radius: 13px; font-size: 18px; }
     .call-pill { right: 0; bottom: -46px; }
     .annotation { display: none; }
   }
@@ -564,10 +619,41 @@
   </div>
 </section>
 
-<!-- ============ CLOSING ============ -->
-<section class="closing" id="call-cali">
-  <h2>Your next meditation is <span class="serif">one call away.</span></h2>
-  <a class="btn-primary" href="tel:+16893993448" aria-label="Call Cali at 689 399 3448">📞&ensp;Call Cali · (689) 399-3448</a>
+<!-- ============ CALI FOR WORK ============ -->
+<section class="work" id="work">
+  <div class="work-inner">
+    <div class="work-copy">
+      <div class="kicker">Cali for work</div>
+      <h2>Talk through the stress. <span class="serif">Then let it go.</span></h2>
+      <p class="work-intro">Employees call Cali and say what's weighing on them: an overwhelming meeting, a difficult shift, or the thoughts they can't switch off. Cali listens, responds, and turns that conversation into a guided meditation for the moment. It feels personal and human, without pretending to be therapy.</p>
+      <a class="work-cta" href="tel:+16893993448" aria-label="Call Cali at 689 399 3448 and experience a workplace reset">Experience Cali in 3 minutes</a>
+      <p class="work-note">Made for offices, hybrid teams, and frontline workers.</p>
+    </div>
+
+    <div class="work-features">
+      <div class="work-feature">
+        <div class="work-icon" aria-hidden="true">01</div>
+        <div>
+          <h3>Talk before the meditation begins</h3>
+          <p>Employees can put everyday stress into words and feel heard before being guided into a calmer state.</p>
+        </div>
+      </div>
+      <div class="work-feature">
+        <div class="work-icon" aria-hidden="true">02</div>
+        <div>
+          <h3>A reset shaped in real time</h3>
+          <p>Cali creates a one-, three-, five-, or ten-minute session around what the employee just shared.</p>
+        </div>
+      </div>
+      <div class="work-feature">
+        <div class="work-icon" aria-hidden="true">03</div>
+        <div>
+          <h3>Available wherever work happens</h3>
+          <p>No app, camera, or content library. Just a familiar phone call from a desk, a store floor, a hospital, or home.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ============ WAITLIST MODAL ============ -->
